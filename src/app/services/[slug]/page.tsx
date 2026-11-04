@@ -53,7 +53,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
           <nav aria-label="Breadcrumb">
             <ol className="t-eyebrow flex flex-wrap items-center gap-2 text-stone">
               <li>
-                <Link href="/services" className="link-line">
+                <Link href="/services" className="link-line inline-flex min-h-11 items-center py-2">
                   Services
                 </Link>
               </li>
@@ -213,13 +213,13 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
         href={`/services/${next.slug}`}
         className="group block border-t border-ink bg-ivory-deep/60 transition-colors duration-500 hover:bg-turmeric"
       >
-        <div className="wrap flex items-center justify-between gap-6 py-14 md:py-20">
-          <div>
+        <div className="wrap flex items-center justify-between gap-4 py-14 sm:gap-6 md:py-20">
+          <div className="min-w-0">
             <p className="t-eyebrow text-stone group-hover:text-ink">Next service</p>
-            <p className="t-h2 mt-4">{next.title}</p>
+            <p className="t-h2 mt-3 sm:mt-4">{next.title}</p>
           </div>
-          <span className="inline-flex size-14 shrink-0 items-center justify-center border border-ink transition-colors group-hover:bg-ink group-hover:text-turmeric md:size-20">
-            <Arrow className="size-6" />
+          <span className="inline-flex size-12 shrink-0 items-center justify-center border border-ink transition-colors group-hover:bg-ink group-hover:text-turmeric sm:size-14 md:size-20">
+            <Arrow className="size-5 sm:size-6" />
           </span>
         </div>
       </Link>

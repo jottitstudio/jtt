@@ -38,6 +38,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 1rem);
+  overflow-x: clip;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
   font-feature-settings: "ss01", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 /* Subtle paper grain over everything — a print-like finish */
@@ -101,28 +103,31 @@ p {
 @utility t-display {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(3.1rem, 11.2vw, 12rem);
-  line-height: 0.86;
+  font-size: clamp(2.55rem, 11.2vw, 12rem);
+  line-height: 0.88;
   letter-spacing: -0.045em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 @utility t-h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.6rem, 7.4vw, 8rem);
-  line-height: 0.9;
+  font-size: clamp(2.15rem, 7.4vw, 8rem);
+  line-height: 0.92;
   letter-spacing: -0.04em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 @utility t-h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.1rem, 5.2vw, 5.5rem);
-  line-height: 0.94;
+  font-size: clamp(1.75rem, 5.2vw, 5.5rem);
+  line-height: 0.96;
   letter-spacing: -0.035em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 @utility t-h3 {
@@ -225,6 +230,8 @@ dialog.menu-dialog {
   max-height: 100dvh;
   margin: 0;
   padding: 0;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   border: 0;
   background: var(--color-ink);
   color: var(--color-ivory);

@@ -354,7 +354,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </div>
 
         {/* Honeypot — hidden from people and assistive tech */}
-        <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <div aria-hidden="true" className="sr-only">
           <label htmlFor={id("website")}>Leave this field empty</label>
           <input
             id={id("website")}
@@ -368,7 +368,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </div>
 
         <div className="md:col-span-2">
-          <label htmlFor={id("consent")} className="flex cursor-pointer items-start gap-3 py-2">
+          <label htmlFor={id("consent")} className="flex min-h-12 cursor-pointer items-start gap-3.5 py-2.5">
             <input
               id={id("consent")}
               name="consent"
@@ -383,7 +383,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
                 setTouched((t) => ({ ...t, consent: true }));
                 setErrors((er) => ({ ...er, consent: validateField("consent", next) }));
               }}
-              className="mt-1 size-5 shrink-0 accent-ink"
+              className="mt-0.5 size-6 shrink-0 accent-ink"
             />
             <span className="text-sm leading-relaxed">
               I agree to jottitstudio using these details to respond to my enquiry, as described in the{" "}

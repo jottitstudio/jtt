@@ -45,7 +45,7 @@ export function WorkCard({
           )}
           <span
             aria-hidden="true"
-            className="absolute bottom-4 right-4 inline-flex size-12 translate-y-3 items-center justify-center bg-turmeric text-ink opacity-0 transition-all duration-500 ease-[var(--ease-studio)] group-hover:translate-y-0 group-hover:opacity-100"
+            className="absolute bottom-3 right-3 inline-flex size-11 items-center justify-center bg-turmeric text-ink transition-all duration-500 ease-[var(--ease-studio)] sm:bottom-4 sm:right-4 sm:size-12 lg:translate-y-3 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
           >
             <Arrow direction="up-right" className="size-5" />
           </span>

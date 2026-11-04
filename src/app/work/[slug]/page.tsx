@@ -47,7 +47,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
           <nav aria-label="Breadcrumb">
             <ol className="t-eyebrow flex flex-wrap items-center gap-2 text-stone">
               <li>
-                <Link href="/work" className="link-line">
+                <Link href="/work" className="link-line inline-flex min-h-11 items-center py-2">
                   Our work
                 </Link>
               </li>
@@ -90,10 +90,10 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
                 <div>
                   <dt className="t-eyebrow text-stone">Disciplines</dt>
                   <dd className="mt-1">
-                    <ul>
+                    <ul className="space-y-0.5">
                       {project.services.map((s) => (
                         <li key={s}>
-                          <Link href={`/services/${s}`} className="link-line">
+                          <Link href={`/services/${s}`} className="link-line inline-flex min-h-11 items-center py-1">
                             {serviceTitle(s)}
                           </Link>
                         </li>

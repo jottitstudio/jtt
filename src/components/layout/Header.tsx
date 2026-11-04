@@ -63,7 +63,7 @@ export function Header() {
         }`}
       >
         <div className="wrap flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Link href="/" aria-label={`${site.name} — home`} className="inline-flex items-center">
+          <Link href="/" aria-label={`${site.name} — home`} className="inline-flex min-h-11 items-center py-2">
             <Wordmark className="h-7 w-auto sm:h-8" />
           </Link>
 
@@ -74,7 +74,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     aria-current={isActive(pathname, item.href) ? "page" : undefined}
-                    className="link-line font-display text-[0.95rem] tracking-tight"
+                    className="link-line inline-flex min-h-11 items-center font-display text-[0.95rem] tracking-tight"
                   >
                     {item.label}
                   </Link>
@@ -122,7 +122,7 @@ export function Header() {
       >
         <div className="flex h-full flex-col">
           <div className="wrap flex h-[var(--header-h)] shrink-0 items-center justify-between">
-            <Link href="/" aria-label={`${site.name} — home`} className="inline-flex items-center" onClick={() => setOpen(false)}>
+            <Link href="/" aria-label={`${site.name} — home`} className="inline-flex min-h-11 items-center py-2" onClick={() => setOpen(false)}>
               <Wordmark className="h-7 w-auto sm:h-8" />
             </Link>
             <button
