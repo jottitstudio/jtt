@@ -6,15 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { mainNav, site } from "@/content/site";
 import { buttonClasses } from "@/components/ui/Button";
 import { Arrow } from "@/components/art/Motifs";
+import { Wordmark } from "./Logo";
 
-export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`whitespace-nowrap font-display font-bold tracking-[-0.04em] ${className}`}>
-      jottitstudio
-      <span aria-hidden="true" className="ml-[0.08em] inline-block size-[0.32em] translate-y-[-0.02em] bg-turmeric" />
-    </span>
-  );
-}
+export { Wordmark };
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -69,8 +63,8 @@ export function Header() {
         }`}
       >
         <div className="wrap flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Link href="/" aria-label={`${site.name} — home`} className="text-[1.45rem] leading-none">
-            <Wordmark />
+          <Link href="/" aria-label={`${site.name} — home`} className="inline-flex items-center">
+            <Wordmark className="h-7 w-auto sm:h-8" />
           </Link>
 
           <nav aria-label="Main" className="hidden lg:block">
@@ -128,8 +122,8 @@ export function Header() {
       >
         <div className="flex h-full flex-col">
           <div className="wrap flex h-[var(--header-h)] shrink-0 items-center justify-between">
-            <Link href="/" className="text-[1.45rem] leading-none" onClick={() => setOpen(false)}>
-              <Wordmark />
+            <Link href="/" aria-label={`${site.name} — home`} className="inline-flex items-center" onClick={() => setOpen(false)}>
+              <Wordmark className="h-7 w-auto sm:h-8" />
             </Link>
             <button
               type="button"

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { legalNav, mainNav, site } from "@/content/site";
 import { services } from "@/content/services";
-import { Wordmark } from "./Header";
+import { Wordmark } from "./Logo";
 import { TempleBorder, Arrow } from "@/components/art/Motifs";
 import { Placeholder } from "@/components/ui/Eyebrow";
 
@@ -12,8 +12,8 @@ export function Footer() {
       <div className="wrap pt-20 pb-10 md:pt-28">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Link href="/" aria-label={`${site.name} — home`} className="inline-block text-[clamp(2.4rem,5vw,4rem)] leading-none">
-              <Wordmark />
+            <Link href="/" aria-label={`${site.name} — home`} className="inline-block">
+              <Wordmark className="h-10 w-auto sm:h-12 md:h-14" />
             </Link>
             <p className="mt-6 max-w-sm text-ivory/70">
               Branding, content, marketing, film and websites — one creative partner, from first idea to measurable growth.
