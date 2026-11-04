@@ -27,6 +27,8 @@ export interface Service {
   shortTitle: string;
   /** One-line summary used in lists */
   summary: string;
+  /** Direct customer benefit statement for business owners */
+  benefit: string;
   /** Opening paragraph on the detail page */
   intro: string;
   /** What problem this service solves for a business */
@@ -56,6 +58,12 @@ export interface Project {
   services: ServiceSlug[];
   tagline: string;
   summary: string;
+  /** Concise creative challenge shown on portfolio cards */
+  challenge: string;
+  /** Concise strategic & creative approach shown on portfolio cards */
+  approachSummary: string;
+  /** Concise intended outcome shown on portfolio cards */
+  intendedOutcome: string;
   cover: ImageAsset;
   gallery: ImageAsset[];
   palette: string[];

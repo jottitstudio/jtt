@@ -41,7 +41,7 @@ export function WorkCard({
             className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-studio)] group-hover:scale-[1.04]"
           />
           {project.status === "concept" && (
-            <ConceptTag className="absolute left-4 top-4 bg-ivory/90 text-ink backdrop-blur-sm" />
+            <ConceptTag className="absolute left-4 top-4 bg-ivory/95 text-ink backdrop-blur-sm" />
           )}
           <span
             aria-hidden="true"
@@ -50,6 +50,7 @@ export function WorkCard({
             <Arrow direction="up-right" className="size-5" />
           </span>
         </div>
+
         <div className="mt-5 grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1">
           <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] md:text-[1.75rem]">
             {index !== undefined && (
@@ -59,11 +60,38 @@ export function WorkCard({
             )}
             <span className="link-line">{project.title}</span>
           </h3>
-          <p className="text-sm tabular-nums text-stone">{project.year}</p>
-          <p className="col-span-2 text-[0.95rem] text-ink/75">{project.tagline}</p>
-          <p className="col-span-2 mt-2 t-eyebrow text-stone">
-            {project.services.map(serviceTitle).join(" · ")}
+          <p className="text-sm tabular-nums text-stone">
+            {project.sector} · {project.year}
           </p>
+          <p className="col-span-2 mt-1 font-display text-[1rem] font-medium text-ink">{project.tagline}</p>
+
+          <dl className="col-span-2 mt-4 space-y-2.5 border-l-2 border-ink/20 pl-4 text-sm text-ink/75 transition-colors group-hover:border-turmeric">
+            <div>
+              <dt className="inline font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink">
+                Challenge:{" "}
+              </dt>
+              <dd className="inline">{project.challenge}</dd>
+            </div>
+            <div>
+              <dt className="inline font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink">
+                Approach:{" "}
+              </dt>
+              <dd className="inline">{project.approachSummary}</dd>
+            </div>
+            <div>
+              <dt className="inline font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink">
+                Intended outcome:{" "}
+              </dt>
+              <dd className="inline">{project.intendedOutcome}</dd>
+            </div>
+          </dl>
+
+          <div className="col-span-2 mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-ink/15 pt-3">
+            <p className="t-eyebrow text-stone">{project.services.map(serviceTitle).join(" · ")}</p>
+            <span className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink underline decoration-ink/40 underline-offset-4 group-hover:decoration-ink">
+              View concept study →
+            </span>
+          </div>
         </div>
       </Link>
     </article>

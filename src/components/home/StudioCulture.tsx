@@ -37,13 +37,13 @@ function Experiment({
   );
 }
 
-export function StudioCulture() {
+export function StudioCulture({ index = "08" }: { index?: string }) {
   const [kolam, textile, arch, leaf, pop] = experiments;
   return (
-    <section aria-labelledby="studio-title" className="wrap py-24 md:py-40">
+    <section className="wrap py-24 md:py-40">
       <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
         <div className="lg:col-span-7">
-          <Eyebrow index="07" tamil="பரிசோதனைகள்">
+          <Eyebrow index={index} tamil="பரிசோதனைகள்">
             Studio culture
           </Eyebrow>
           <h2 id="studio-title" className="t-h1 mt-8">
@@ -52,9 +52,9 @@ export function StudioCulture() {
         </div>
         <Reveal className="lg:col-span-4 lg:col-start-9">
           <p className="text-ink/75">
-            Between projects, we experiment. Kolam geometry, temple architecture, handloom borders, banana leaves and the
-            bold graphics of South Indian streets are our sketchbook — translated into contemporary systems, never copied
-            as decoration.
+            Between client engagements, we experiment. Kolam geometry, temple architecture, handloom borders, banana
+            leaves and the bold graphics of South Indian streets are our sketchbook — translated into contemporary
+            design systems, never copied as decoration.
           </p>
         </Reveal>
       </div>
