@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { ServiceList } from "@/components/services/ServiceList";
-import { Process } from "@/components/home/Process";
-import { ContactCTA } from "@/components/home/ContactCTA";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { getServices } from "@/lib/cms";
 
@@ -64,8 +64,27 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      <Process />
-      <ContactCTA />
+      <section aria-labelledby="services-next-title" className="border-t border-ink/15 bg-turmeric py-20 text-ink md:py-28">
+        <div className="wrap flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <Eyebrow tamil="திட்டம்">Project scope</Eyebrow>
+            <h2 id="services-next-title" className="t-h2 mt-6 max-w-[18ch]">
+              Not sure which combination you need?
+            </h2>
+            <p className="mt-4 max-w-xl text-ink/80">
+              Tell us where your business is today and what you want to achieve. We&apos;ll recommend the right scope.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/contact" variant="solid">
+              Discuss a Project
+            </ButtonLink>
+            <ButtonLink href="/work" variant="outline">
+              See Our Work
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

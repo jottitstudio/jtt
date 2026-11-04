@@ -9,7 +9,6 @@ import { Reveal, RevealLines, DrawRule } from "@/components/ui/Reveal";
 import { ServiceGlyph, Arrow } from "@/components/art/Motifs";
 import { KolamLattice } from "@/components/art/KolamLattice";
 import { WorkCard } from "@/components/work/WorkCard";
-import { ContactCTA } from "@/components/home/ContactCTA";
 import { ButtonLink } from "@/components/ui/Button";
 
 export async function generateStaticParams() {
@@ -78,7 +77,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
             <Reveal delay={0.35} className="lg:col-span-6 lg:col-start-6">
               <p className="t-lead text-ink/85">{service.intro}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/contact#enquiry">Discuss a project</ButtonLink>
+                <ButtonLink href="/contact">Discuss a project</ButtonLink>
                 {related.length > 0 && (
                   <ButtonLink href="#related" variant="outline">
                     See related work
@@ -202,6 +201,14 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
         </div>
       </section>
 
+      <section aria-label="Start a project" className="wrap flex flex-col items-start justify-between gap-8 border-t border-ink/15 py-20 md:flex-row md:items-center">
+        <div>
+          <Eyebrow>Get started</Eyebrow>
+          <p className="t-h3 mt-3 max-w-xl">Looking for a partner for {service.title.toLowerCase()}?</p>
+        </div>
+        <ButtonLink href="/contact">Start a Project</ButtonLink>
+      </section>
+
       <Link
         href={`/services/${next.slug}`}
         className="group block border-t border-ink bg-ivory-deep/60 transition-colors duration-500 hover:bg-turmeric"
@@ -216,8 +223,6 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
           </span>
         </div>
       </Link>
-
-      <ContactCTA />
     </>
   );
 }

@@ -51,7 +51,7 @@ export function Hero() {
               <ButtonLink href="/work" variant="solid">
                 Explore Our Work
               </ButtonLink>
-              <ButtonLink href="/contact#enquiry" variant="outline">
+              <ButtonLink href="/contact" variant="outline">
                 Start a Project
               </ButtonLink>
             </Reveal>

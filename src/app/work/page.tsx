@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { WorkGrid } from "@/components/work/WorkGrid";
-import { ContactCTA } from "@/components/home/ContactCTA";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ButtonLink } from "@/components/ui/Button";
 import { getProjects, getServices } from "@/lib/cms";
 
 export const metadata: Metadata = {
@@ -36,7 +37,24 @@ export default async function WorkPage() {
       <section aria-label="Projects" className="wrap pb-28 md:pb-40">
         <WorkGrid projects={projects} services={services.map(({ slug, shortTitle }) => ({ slug, shortTitle }))} />
       </section>
-      <ContactCTA />
+      <section aria-labelledby="work-next-title" className="border-t border-ink/15 bg-turmeric py-20 text-ink md:py-28">
+        <div className="wrap flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <Eyebrow tamil="வணக்கம்">Your brand next</Eyebrow>
+            <h2 id="work-next-title" className="t-h2 mt-6 max-w-[16ch]">
+              Have a project in mind?
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/contact" variant="solid">
+              Start a Project
+            </ButtonLink>
+            <ButtonLink href="/services" variant="outline">
+              Explore Services
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

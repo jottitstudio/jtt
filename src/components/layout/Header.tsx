@@ -91,7 +91,7 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:block">
-              <Link href="/contact#enquiry" className={buttonClasses("solid", "min-h-11 gap-4! px-5!")}>
+              <Link href="/contact" className={buttonClasses("solid", "min-h-11 gap-4! px-5!")}>
                 <span>Start a Project</span>
                 <Arrow className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
               </Link>
@@ -166,7 +166,7 @@ export function Header() {
 
           <div className="wrap shrink-0 pb-8">
             <Link
-              href="/contact#enquiry"
+              href="/contact"
               onClick={() => setOpen(false)}
               className={buttonClasses("turmeric", "w-full")}
             >

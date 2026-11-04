@@ -3,8 +3,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/layout/PageHero";
 import { Eyebrow, Placeholder } from "@/components/ui/Eyebrow";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
-import { Process } from "@/components/home/Process";
-import { ContactCTA } from "@/components/home/ContactCTA";
+import { ButtonLink } from "@/components/ui/Button";
 import { KolamLattice } from "@/components/art/KolamLattice";
 import { GopuramLines, TempleBorder } from "@/components/art/Motifs";
 import { team } from "@/content/studio";
@@ -207,8 +206,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Process index="05" />
-      <ContactCTA />
+      <section aria-labelledby="about-next-title" className="border-t border-ink/15 bg-turmeric py-20 text-ink md:py-28">
+        <div className="wrap flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <Eyebrow index="05" tamil="தொடர்பு">
+              Work with us
+            </Eyebrow>
+            <h2 id="about-next-title" className="t-h2 mt-6 max-w-[16ch]">
+              Ready to build something that matters?
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/contact" variant="solid">
+              Start a Project
+            </ButtonLink>
+            <ButtonLink href="/work" variant="outline">
+              Explore Our Work
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

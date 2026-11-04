@@ -218,7 +218,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
 
       <section aria-label="Start a similar project" className="wrap flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-center">
         <p className="t-h3 max-w-xl">Have a brand that deserves this level of thinking?</p>
-        <ButtonLink href="/contact#enquiry">Start a Project</ButtonLink>
+        <ButtonLink href="/contact">Start a Project</ButtonLink>
       </section>
 
       <Link href={`/work/${next.slug}`} className="group relative block overflow-hidden bg-ink text-ivory">
