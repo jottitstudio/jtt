@@ -1,26 +1,337 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   jottitstudio — design tokens
+   Ivory + ink dominate. Turmeric is the signature accent.
+   Maroon, leaf and terracotta are used sparingly.
+------------------------------------------------------------------- */
+@theme {
+  --color-turmeric: #f5c400;
+  --color-ink: #111111;
+  --color-ivory: #f5ebdd;
+  --color-ivory-deep: #ecdfcc;
+  --color-paper: #faf4ea;
+  --color-maroon: #8e2635;
+  --color-leaf: #356b45;
+  --color-terracotta: #c66b3d;
+  --color-stone: #6b645b;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-tamil: var(--font-noto-tamil), var(--font-dm-sans), sans-serif;
+
+  --ease-studio: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 112rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --header-h: 4.5rem;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper grain over everything — a print-like finish */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+::selection {
+  background: var(--color-turmeric);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--color-turmeric);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------
+   Layout + type utilities
+------------------------------------------------------------------- */
+@utility wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility t-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.1rem, 11.2vw, 12rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+@utility t-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7.4vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+@utility t-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5.2vw, 5.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+@utility t-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+@utility t-lead {
+  font-size: clamp(1.125rem, 1.5vw, 1.4rem);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
+@utility t-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@utility tamil {
+  font-family: var(--font-tamil);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(currentColor 1.1px, transparent 1.3px);
+  background-size: 22px 22px;
+}
+
+@utility hairline {
+  border-color: color-mix(in oklab, currentColor 18%, transparent);
+}
+
+@utility visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Link underline — draws from left on hover
+------------------------------------------------------------------- */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-studio);
+  padding-bottom: 2px;
+}
+.link-line:hover,
+.link-line:focus-visible,
+.link-line[aria-current="page"] {
+  background-size: 100% 1px;
+}
+
+/* ------------------------------------------------------------------
+   Marquee — slow, pauses on hover, static for reduced motion
+------------------------------------------------------------------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mobile menu dialog — enters/leaves with @starting-style
+------------------------------------------------------------------- */
+dialog.menu-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--color-ink);
+  color: var(--color-ivory);
+  opacity: 0;
+  translate: 0 -2%;
+  transition:
+    opacity 0.35s var(--ease-studio),
+    translate 0.45s var(--ease-studio),
+    display 0.45s allow-discrete,
+    overlay 0.45s allow-discrete;
+}
+dialog.menu-dialog[open] {
+  opacity: 1;
+  translate: 0 0;
+}
+@starting-style {
+  dialog.menu-dialog[open] {
+    opacity: 0;
+    translate: 0 -2%;
+  }
+}
+dialog.menu-dialog::backdrop {
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.menu-dialog {
+    translate: none;
+    transition-duration: 0.01s;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Form fields
+------------------------------------------------------------------- */
+.field-input {
+  width: 100%;
+  min-height: 3.25rem;
+  font-size: 1.0625rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 35%, transparent);
+  border-radius: 0;
+  padding: 0.75rem 0;
+  transition: border-color 0.25s ease;
+  appearance: none;
+}
+.field-input::placeholder {
+  color: color-mix(in oklab, currentColor 40%, transparent);
+}
+.field-input:hover {
+  border-bottom-color: currentColor;
+}
+.field-input:focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--color-turmeric);
+  box-shadow: 0 1px 0 0 var(--color-turmeric);
+}
+.field-input[aria-invalid="true"] {
+  border-bottom-color: var(--color-maroon);
+}
+textarea.field-input {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.5;
+}
+@media (pointer: coarse) {
+  .field-input {
+    min-height: 3.5rem;
+  }
+}
+
+.chip-input:focus-visible + .chip {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+.chip-input:checked + .chip {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+  border-color: var(--color-ink);
+}
+.chip-input:checked + .chip .chip-mark {
+  background: var(--color-turmeric);
+  border-color: var(--color-turmeric);
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Turmeric-toned forms: focus indicators switch to ink for contrast */
+.tone-turmeric .field-input:focus-visible {
+  border-bottom-color: var(--color-ink);
+  box-shadow: 0 1px 0 0 var(--color-ink);
+}
+
+@keyframes scrollcue {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(200%); }
 }
