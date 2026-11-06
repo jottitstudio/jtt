@@ -25,17 +25,17 @@ const futureProofSlots = [
   },
 ] as const;
 
-export function TrustCredibility({ index = "07" }: { index?: string }) {
+export function TrustCredibility({ index = "08" }: { index?: string }) {
   return (
-    <section id="credibility" className="border-t border-ink/15 bg-ivory-deep/45 py-24 md:py-40">
+    <section id="credibility" className="border-t border-ink/15 bg-parchment py-24 md:py-40">
       <div className="wrap">
         <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="lg:col-span-7">
-            <Eyebrow index={index} tamil="நம்பகத்தன்மை">
-              Trust &amp; credibility
+            <Eyebrow index={index} note="Trust & Proof">
+              Honest standards
             </Eyebrow>
             <h2 id="credibility-title" className="t-h1 mt-8">
-              <RevealLines lines={["Built on proof,", "not promises."]} />
+              <RevealLines lines={["BUILT ON PROOF,", "NOT PROMISES."]} />
             </h2>
           </div>
           <Reveal className="space-y-3 lg:col-span-4 lg:col-start-9">
@@ -49,17 +49,19 @@ export function TrustCredibility({ index = "07" }: { index?: string }) {
         {/* Part 1: Concrete studio commitments clients receive today */}
         <div className="mt-16 md:mt-24">
           <h3 className="t-eyebrow text-ink">Our working commitments on every engagement</h3>
-          <ul role="list" className="mt-6 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-4">
+          <ul role="list" className="mt-6 grid gap-px border-2 border-ink bg-ink sm:grid-cols-2 lg:grid-cols-4">
             {trustStandards.map((item, i) => (
               <Reveal
                 as="li"
                 key={item.title}
                 delay={i * 0.06}
-                className="flex flex-col justify-between bg-ivory p-6 md:p-8"
+                className="flex flex-col justify-between bg-paper p-6 md:p-8"
               >
                 <div>
-                  <span className="font-display text-xs font-medium tracking-[0.14em] text-stone">{item.index}</span>
-                  <h4 className="mt-4 font-display text-xl font-semibold tracking-[-0.02em] text-ink">{item.title}</h4>
+                  <span className="font-display text-xs font-bold tracking-[0.14em] text-purple">{item.index}</span>
+                  <h4 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.02em] text-ink">
+                    {item.title}
+                  </h4>
                   <p className="mt-3 text-sm leading-relaxed text-ink/75">{item.body}</p>
                 </div>
               </Reveal>
@@ -73,7 +75,7 @@ export function TrustCredibility({ index = "07" }: { index?: string }) {
         <div>
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-ink">
+              <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.02em] text-ink">
                 Client testimonials &amp; verified project outcomes
               </h3>
               <p className="mt-2 max-w-2xl text-sm text-ink/70">
@@ -82,8 +84,8 @@ export function TrustCredibility({ index = "07" }: { index?: string }) {
                 approved for publication.
               </p>
             </div>
-            <span className="inline-flex items-center gap-2 self-start border border-dashed border-ink/50 bg-ivory px-3 py-1.5 font-display text-xs uppercase tracking-[0.12em] text-ink md:self-auto">
-              <span aria-hidden="true" className="inline-block size-2 rotate-45 bg-turmeric ring-1 ring-ink" />
+            <span className="inline-flex items-center gap-2 self-start border border-dashed border-ink/50 bg-paper px-3 py-1.5 font-display text-xs font-bold uppercase tracking-[0.12em] text-ink md:self-auto">
+              <span aria-hidden="true" className="inline-block size-2 rotate-45 bg-purple" />
               Zero fabricated proof policy
             </span>
           </div>
@@ -94,14 +96,14 @@ export function TrustCredibility({ index = "07" }: { index?: string }) {
                 as="li"
                 key={slot.tag}
                 delay={i * 0.08}
-                className="flex flex-col justify-between border border-dashed border-ink/35 bg-paper p-6 md:p-8"
+                className="flex flex-col justify-between border border-dashed border-ink/40 bg-paper p-6 md:p-8"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-display text-[0.7rem] font-medium uppercase tracking-[0.14em] text-stone">
+                    <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.14em] text-stone">
                       {slot.tag}
                     </span>
-                    <span className="font-display text-xs font-medium text-maroon">{slot.category}</span>
+                    <span className="font-display text-xs font-bold text-purple">{slot.category}</span>
                   </div>
                   <p className="mt-6 text-sm leading-relaxed text-ink/80">
                     <Placeholder>{slot.note}</Placeholder>
@@ -114,11 +116,14 @@ export function TrustCredibility({ index = "07" }: { index?: string }) {
             ))}
           </ul>
 
-          <Reveal delay={0.2} className="mt-12 flex flex-col items-start justify-between gap-6 border-t border-ink/15 pt-8 sm:flex-row sm:items-center">
+          <Reveal
+            delay={0.2}
+            className="mt-12 flex flex-col items-start justify-between gap-6 border-t border-ink/15 pt-8 sm:flex-row sm:items-center"
+          >
             <p className="text-sm text-ink/80">
               Want to walk through our thinking, sample deliverables and how we would approach your brand?
             </p>
-            <ButtonLink href="/contact" variant="solid">
+            <ButtonLink href="/contact" variant="purple">
               Request a Walkthrough Call
             </ButtonLink>
           </Reveal>

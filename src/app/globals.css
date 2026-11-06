@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   jottitstudio — design tokens
-   Ivory + ink dominate. Turmeric is the signature accent.
-   Maroon, leaf and terracotta are used sparingly.
+   JOTTIT — Visual Identity & Colour System
+   Primary: Signature Purple (#5F2DB2) & Paper White (#FFFFFF)
+   Historical / Storytelling: Warm Parchment (#F4EBDD), Terracotta (#D96B42), Ink Black (#17151B)
+   Rare Accent: Creative Lime (#D9E56B)
 ------------------------------------------------------------------- */
 @theme {
-  --color-turmeric: #f5c400;
-  --color-ink: #111111;
-  --color-ivory: #f5ebdd;
-  --color-ivory-deep: #ecdfcc;
-  --color-paper: #faf4ea;
-  --color-maroon: #8e2635;
-  --color-leaf: #356b45;
-  --color-terracotta: #c66b3d;
-  --color-stone: #6b645b;
+  --color-purple: #5f2db2;
+  --color-purple-deep: #47218a;
+  --color-paper: #ffffff;
+  --color-ink: #17151b;
+  --color-parchment: #f4ebdd;
+  --color-parchment-deep: #e6d9c3;
+  --color-terracotta: #d96b42;
+  --color-lime: #d9e56b;
+  --color-stone: #645e70;
+
+  /* Compatibility aliases so existing utility classes map to the new JOTTIT palette */
+  --color-ivory: #f4ebdd;
+  --color-ivory-deep: #e6d9c3;
+  --color-turmeric: #d9e56b;
+  --color-maroon: #d96b42;
+  --color-leaf: #5f2db2;
 
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-tamil: var(--font-noto-tamil), var(--font-dm-sans), sans-serif;
+  --font-hand: var(--font-caveat), cursive, sans-serif;
 
   --ease-studio: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -28,12 +36,12 @@
 
 :root {
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --header-h: 4.5rem;
+  --header-h: 4.75rem;
   color-scheme: light;
 }
 
 html {
-  background: var(--color-ivory);
+  background: var(--color-paper);
   color: var(--color-ink);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -51,31 +59,33 @@ body {
   overflow-x: clip;
 }
 
-/* Subtle paper grain over everything — a print-like finish */
+/* Tactile charcoal / paper grain over everything */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.06;
+  opacity: 0.055;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 ::selection {
-  background: var(--color-turmeric);
+  background: var(--color-lime);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--color-purple);
   outline-offset: 3px;
 }
 
 .on-dark :focus-visible,
-.on-dark:focus-visible {
-  outline-color: var(--color-turmeric);
+.on-dark:focus-visible,
+.on-purple :focus-visible,
+.on-purple:focus-visible {
+  outline-color: var(--color-lime);
 }
 
 h1,
@@ -103,8 +113,8 @@ p {
 @utility t-display {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.55rem, 11.2vw, 12rem);
-  line-height: 0.88;
+  font-size: clamp(2.45rem, 8.8vw, 9.25rem);
+  line-height: 0.9;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   overflow-wrap: break-word;
@@ -113,7 +123,7 @@ p {
 @utility t-h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.15rem, 7.4vw, 8rem);
+  font-size: clamp(2.1rem, 6.8vw, 7.25rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -123,8 +133,8 @@ p {
 @utility t-h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 5.2vw, 5.5rem);
-  line-height: 0.96;
+  font-size: clamp(1.75rem, 4.8vw, 5rem);
+  line-height: 0.95;
   letter-spacing: -0.035em;
   text-transform: uppercase;
   overflow-wrap: break-word;
@@ -132,14 +142,14 @@ p {
 
 @utility t-h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
-  line-height: 1.02;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.4vw, 2.25rem);
+  line-height: 1.04;
   letter-spacing: -0.025em;
 }
 
 @utility t-lead {
-  font-size: clamp(1.125rem, 1.5vw, 1.4rem);
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
   line-height: 1.5;
   letter-spacing: -0.005em;
 }
@@ -147,20 +157,28 @@ p {
 @utility t-eyebrow {
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-@utility tamil {
-  font-family: var(--font-tamil);
-  letter-spacing: 0;
-  text-transform: none;
+@utility t-hand {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
 }
 
 @utility dot-grid {
-  background-image: radial-gradient(currentColor 1.1px, transparent 1.3px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(currentColor 1.15px, transparent 1.35px);
+  background-size: 24px 24px;
+}
+
+@utility sketch-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, currentColor 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, currentColor 9%, transparent) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
 @utility hairline {
@@ -184,7 +202,7 @@ p {
 ------------------------------------------------------------------- */
 .link-line {
   background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
+  background-size: 0% 1.5px;
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.45s var(--ease-studio);
@@ -193,7 +211,7 @@ p {
 .link-line:hover,
 .link-line:focus-visible,
 .link-line[aria-current="page"] {
-  background-size: 100% 1px;
+  background-size: 100% 1.5px;
 }
 
 /* ------------------------------------------------------------------
@@ -202,7 +220,10 @@ p {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 48s linear infinite;
+  animation: marquee 44s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
@@ -210,11 +231,6 @@ p {
 @keyframes marquee {
   to {
     transform: translateX(-50%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
   }
 }
 
@@ -233,8 +249,8 @@ dialog.menu-dialog {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   border: 0;
-  background: var(--color-ink);
-  color: var(--color-ivory);
+  background: var(--color-purple-deep);
+  color: var(--color-paper);
   opacity: 0;
   translate: 0 -2%;
   transition:
@@ -242,6 +258,10 @@ dialog.menu-dialog {
     translate 0.45s var(--ease-studio),
     display 0.45s allow-discrete,
     overlay 0.45s allow-discrete;
+  @media (prefers-reduced-motion: reduce) {
+    translate: none;
+    transition-duration: 0.01s;
+  }
 }
 dialog.menu-dialog[open] {
   opacity: 1;
@@ -256,15 +276,9 @@ dialog.menu-dialog[open] {
 dialog.menu-dialog::backdrop {
   background: transparent;
 }
-@media (prefers-reduced-motion: reduce) {
-  dialog.menu-dialog {
-    translate: none;
-    transition-duration: 0.01s;
-  }
-}
 
 /* ------------------------------------------------------------------
-   Form fields
+   Form fields — deferred validation via :user-invalid + aria-invalid
 ------------------------------------------------------------------- */
 .field-input {
   width: 100%;
@@ -272,25 +286,29 @@ dialog.menu-dialog::backdrop {
   font-size: 1.0625rem;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid color-mix(in oklab, currentColor 35%, transparent);
+  border-bottom: 1.5px solid color-mix(in oklab, currentColor 35%, transparent);
   border-radius: 0;
   padding: 0.75rem 0;
-  transition: border-color 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
   appearance: none;
 }
 .field-input::placeholder {
-  color: color-mix(in oklab, currentColor 40%, transparent);
+  color: color-mix(in oklab, currentColor 42%, transparent);
 }
 .field-input:hover {
   border-bottom-color: currentColor;
 }
 .field-input:focus-visible {
   outline: none;
-  border-bottom: 2px solid var(--color-turmeric);
-  box-shadow: 0 1px 0 0 var(--color-turmeric);
+  border-bottom: 2px solid var(--color-purple);
+  box-shadow: 0 1px 0 0 var(--color-purple);
 }
+.field-input:user-invalid,
 .field-input[aria-invalid="true"] {
-  border-bottom-color: var(--color-maroon);
+  border-bottom-color: var(--color-terracotta);
+}
+.field-input:user-valid {
+  border-bottom-color: var(--color-purple);
 }
 textarea.field-input {
   resize: vertical;
@@ -304,17 +322,17 @@ textarea.field-input {
 }
 
 .chip-input:focus-visible + .chip {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--color-purple);
   outline-offset: 3px;
 }
 .chip-input:checked + .chip {
-  background: var(--color-ink);
-  color: var(--color-ivory);
-  border-color: var(--color-ink);
+  background: var(--color-purple);
+  color: var(--color-paper);
+  border-color: var(--color-purple);
 }
 .chip-input:checked + .chip .chip-mark {
-  background: var(--color-turmeric);
-  border-color: var(--color-turmeric);
+  background: var(--color-lime);
+  border-color: var(--color-lime);
 }
 
 /* Lenis smooth scrolling */
@@ -332,10 +350,9 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Turmeric-toned forms: focus indicators switch to ink for contrast */
-.tone-turmeric .field-input:focus-visible {
-  border-bottom-color: var(--color-ink);
-  box-shadow: 0 1px 0 0 var(--color-ink);
+.tone-purple .field-input:focus-visible {
+  border-bottom-color: var(--color-lime);
+  box-shadow: 0 1px 0 0 var(--color-lime);
 }
 
 @keyframes scrollcue {

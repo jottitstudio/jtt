@@ -24,17 +24,9 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
     title: service.title,
     description: service.summary,
     alternates: { canonical: `/services/${service.slug}` },
-    openGraph: { title: `${service.title} — jottitstudio`, description: service.summary },
+    openGraph: { title: `${service.title} — JOTTIT`, description: service.summary },
   };
 }
-
-const accentText = {
-  turmeric: "text-ink",
-  maroon: "text-maroon",
-  leaf: "text-leaf",
-  terracotta: "text-terracotta",
-  ink: "text-ink",
-} as const;
 
 async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
   const { slug } = await params;
@@ -47,8 +39,11 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
 
   return (
     <>
-      <section className="relative overflow-hidden pt-[calc(var(--header-h)+3rem)] pb-20 md:pt-[calc(var(--header-h)+5rem)] md:pb-28">
-        <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0 text-ink/[0.06] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
+      <section className="relative overflow-hidden border-b border-ink/15 bg-parchment pt-[calc(var(--header-h)+3rem)] pb-20 md:pt-[calc(var(--header-h)+5rem)] md:pb-28">
+        <div
+          aria-hidden="true"
+          className="dot-grid pointer-events-none absolute inset-0 text-ink/[0.06] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]"
+        />
         <div className="wrap relative">
           <nav aria-label="Breadcrumb">
             <ol className="t-eyebrow flex flex-wrap items-center gap-2 text-stone">
@@ -58,7 +53,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li aria-current="page" className="text-ink">
+              <li aria-current="page" className="text-purple">
                 {service.index} — {service.shortTitle}
               </li>
             </ol>
@@ -66,10 +61,13 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
 
           <div className="mt-10 grid gap-y-10 lg:grid-cols-12 lg:gap-x-8">
             <h1 className="t-h1 lg:col-span-9">
-              <RevealLines immediate lines={service.title.split(" & ").map((part, i, arr) => (i < arr.length - 1 ? `${part} &` : part))} />
+              <RevealLines
+                immediate
+                lines={service.title.split(" & ").map((part, i, arr) => (i < arr.length - 1 ? `${part} &` : part))}
+              />
             </h1>
             <Reveal delay={0.3} className="hidden lg:col-span-3 lg:flex lg:justify-end">
-              <ServiceGlyph motif={service.motif} className={`size-28 ${accentText[service.accent]}`} />
+              <ServiceGlyph index={idx} className="size-28 text-purple" />
             </Reveal>
           </div>
 
@@ -77,10 +75,12 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
             <Reveal delay={0.35} className="lg:col-span-6 lg:col-start-6">
               <p className="t-lead text-ink/85">{service.intro}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/contact">Discuss a project</ButtonLink>
+                <ButtonLink href="/contact" variant="purple">
+                  Start a Project
+                </ButtonLink>
                 {related.length > 0 && (
                   <ButtonLink href="#related" variant="outline">
-                    See related work
+                    See Related Work
                   </ButtonLink>
                 )}
               </div>
@@ -89,17 +89,19 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
         </div>
       </section>
 
-      <section aria-labelledby="why-title" className="on-dark bg-ink py-24 text-ivory md:py-32">
+      <section aria-labelledby="why-title" className="on-dark bg-purple py-24 text-paper md:py-32">
         <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-4">
-            <Eyebrow className="text-ivory/60">Why it matters</Eyebrow>
-            <KolamLattice cells={3} className="mt-10 hidden w-32 text-turmeric lg:block" strokeWidth={1} />
+            <Eyebrow note="The Impact" className="text-paper/80">
+              Why it matters
+            </Eyebrow>
+            <KolamLattice cells={3} className="mt-10 hidden w-32 text-lime lg:block" strokeWidth={1.25} />
           </div>
           <Reveal className="lg:col-span-7 lg:col-start-6">
             <h2 id="why-title" className="sr-only">
               Why {service.title.toLowerCase()} matters
             </h2>
-            <p className="font-display text-[clamp(1.5rem,2.8vw,2.5rem)] font-medium leading-[1.2] tracking-[-0.02em]">
+            <p className="font-display text-[clamp(1.5rem,2.8vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-paper">
               {service.why}
             </p>
           </Reveal>
@@ -109,7 +111,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
       <section aria-labelledby="deliverables-title" className="wrap py-24 md:py-32">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-4">
-            <Eyebrow>What we deliver</Eyebrow>
+            <Eyebrow note="Deliverables">What we deliver</Eyebrow>
             <h2 id="deliverables-title" className="t-h2 mt-8">
               Scope
             </h2>
@@ -122,17 +124,19 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
                 delay={i * 0.04}
                 className="flex items-baseline justify-between gap-6 border-b border-ink/20 py-5 first:border-t"
               >
-                <span className="font-display text-xl tracking-[-0.02em] md:text-2xl">{d}</span>
-                <span className="font-display text-xs tabular-nums text-stone">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-xl font-bold uppercase tracking-[-0.02em] md:text-2xl">{d}</span>
+                <span className="font-display text-xs font-bold tabular-nums text-purple">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </Reveal>
             ))}
           </ul>
         </div>
       </section>
 
-      <section aria-labelledby="approach-title" className="bg-paper py-24 md:py-32">
+      <section aria-labelledby="approach-title" className="bg-parchment py-24 md:py-32">
         <div className="wrap">
-          <Eyebrow>How we approach it</Eyebrow>
+          <Eyebrow note="Process">How we approach it</Eyebrow>
           <h2 id="approach-title" className="t-h2 mt-8 max-w-[16ch]">
             Our approach
           </h2>
@@ -143,9 +147,9 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
             <ol className="grid gap-12 md:grid-cols-3 md:gap-8">
               {service.approach.map((a, i) => (
                 <Reveal as="li" key={a.title} delay={i * 0.1} className="md:pt-10">
-                  <span className="font-display text-sm tabular-nums text-stone">0{i + 1}</span>
+                  <span className="font-display text-sm font-bold tabular-nums text-purple">0{i + 1}</span>
                   <h3 className="t-h3 mt-4">{a.title}</h3>
-                  <p className="mt-4 text-ink/70">{a.body}</p>
+                  <p className="mt-4 text-ink/75">{a.body}</p>
                 </Reveal>
               ))}
             </ol>
@@ -157,7 +161,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
         <section id="related" aria-labelledby="related-title" className="wrap py-24 md:py-32">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <Eyebrow>Related concept work</Eyebrow>
+              <Eyebrow note="Selected Work">Related concept work</Eyebrow>
               <h2 id="related-title" className="t-h2 mt-8">
                 In practice
               </h2>
@@ -179,7 +183,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
       <section aria-labelledby="faq-title" className="border-t border-ink/15 py-24 md:py-32">
         <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-4">
-            <Eyebrow>Questions</Eyebrow>
+            <Eyebrow note="Answers">Questions</Eyebrow>
             <h2 id="faq-title" className="t-h2 mt-8">
               FAQ
             </h2>
@@ -187,7 +191,7 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
           <div className="lg:col-span-7 lg:col-start-6">
             {service.faqs.map((f) => (
               <details key={f.q} className="group border-b border-ink/20 first:border-t">
-                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-xl tracking-[-0.02em] md:text-2xl [&::-webkit-details-marker]:hidden">
+                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-xl font-semibold tracking-[-0.02em] md:text-2xl [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <span aria-hidden="true" className="relative size-4 shrink-0">
                     <span className="absolute left-0 top-1/2 h-px w-full bg-ink" />
@@ -201,24 +205,29 @@ async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
         </div>
       </section>
 
-      <section aria-label="Start a project" className="wrap flex flex-col items-start justify-between gap-8 border-t border-ink/15 py-20 md:flex-row md:items-center">
+      <section
+        aria-label="Start a project"
+        className="wrap flex flex-col items-start justify-between gap-8 border-t border-ink/15 py-20 md:flex-row md:items-center"
+      >
         <div>
-          <Eyebrow>Get started</Eyebrow>
-          <p className="t-h3 mt-3 max-w-xl">Looking for a partner for {service.title.toLowerCase()}?</p>
+          <Eyebrow note="Let's Jot It">Get started</Eyebrow>
+          <p className="t-h3 mt-3 max-w-xl">Looking for a studio partner for {service.title.toLowerCase()}?</p>
         </div>
-        <ButtonLink href="/contact">Start a Project</ButtonLink>
+        <ButtonLink href="/contact" variant="purple">
+          Start a Project
+        </ButtonLink>
       </section>
 
       <Link
         href={`/services/${next.slug}`}
-        className="group block border-t border-ink bg-ivory-deep/60 transition-colors duration-500 hover:bg-turmeric"
+        className="group block border-t-2 border-ink bg-parchment transition-colors duration-500 hover:bg-lime"
       >
         <div className="wrap flex items-center justify-between gap-4 py-14 sm:gap-6 md:py-20">
           <div className="min-w-0">
-            <p className="t-eyebrow text-stone group-hover:text-ink">Next service</p>
+            <p className="t-eyebrow text-purple group-hover:text-ink">Next service</p>
             <p className="t-h2 mt-3 sm:mt-4">{next.title}</p>
           </div>
-          <span className="inline-flex size-12 shrink-0 items-center justify-center border border-ink transition-colors group-hover:bg-ink group-hover:text-turmeric sm:size-14 md:size-20">
+          <span className="inline-flex size-12 shrink-0 items-center justify-center border-2 border-ink bg-paper transition-colors group-hover:bg-purple group-hover:text-paper sm:size-14 md:size-20">
             <Arrow className="size-5 sm:size-6" />
           </span>
         </div>

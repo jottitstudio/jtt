@@ -2,9 +2,9 @@ import type { Project } from "@/lib/types";
 
 /**
  * IMPORTANT: Every project below is a clearly labelled CONCEPT project —
- * a self-initiated study created to demonstrate jottitstudio's thinking.
- * None of these brands are real clients, and no results are claimed.
- * Replace or extend with genuine case studies (status: "client") when available.
+ * a self-initiated study created to demonstrate JOTTIT's thinking across
+ * branding, content, performance marketing, film and web.
+ * None of these brands are real clients, and no results or metrics are claimed.
  */
 export const projects: Project[] = [
   {
@@ -14,106 +14,106 @@ export const projects: Project[] = [
     year: "2026",
     sector: "Food & Beverage",
     services: ["branding-identity", "social-media-content"],
-    tagline: "Positioning a neighbourhood filter-coffee ritual for contemporary urban cafés.",
+    tagline: "From a napkin pour-sketch to a contemporary specialty café identity.",
     summary:
-      "How might a traditional South Indian filter-coffee counter scale into a modern specialty café brand without losing the warmth of its morning ritual?",
+      "A self-initiated brand identity and social storytelling concept exploring how a neighbourhood filter-coffee counter can scale into a modern urban café brand.",
     challenge:
-      "Create a scalable café identity that feels contemporary to young urban coffee drinkers while honouring the authentic craft of brass davara-tumbler filter coffee.",
+      "Design a scalable café identity that feels bold and contemporary to young city coffee drinkers while keeping the human warmth of the morning pour ritual.",
     approachSummary:
-      "Translated the pour between tumbler and davara into a geometric kolam-grid mark, paired with a bold turmeric-and-ink packaging system and a rhythmic social content framework.",
+      "Started with a single hand-drawn arc capturing the pour between tumbler and davara, expanding it into packaging, signage and a three-pillar social content system.",
     intendedOutcome:
-      "Designed to give a multi-location café brand instant shelf and street recognition, cohesive takeaway packaging, and a repeatable social playbook for store launches.",
+      "Built to give a growing café brand instant street recognition, cohesive takeaway packaging and a repeatable social playbook for new store openings.",
     cover: {
       src: "/images/work/kaapi-cover.jpg",
-      alt: "Brass davara-tumbler beside a matte black coffee bag and ivory cups marked with a turmeric geometric symbol, in hard sunlight.",
+      alt: "Brass coffee vessel beside matte black coffee packaging and cups marked with a bold geometric symbol.",
       width: 896,
       height: 1200,
     },
     gallery: [
       {
         src: "/images/work/kaapi-detail.jpg",
-        alt: "Overhead flat-lay of business cards, coffee bag, rubber stamp and ivory paper printed with a black and turmeric kolam-like pattern.",
+        alt: "Flat-lay of brand stationery, coffee pouch, rubber stamp and patterned paper.",
         width: 1264,
         height: 848,
       },
     ],
-    palette: ["#111111", "#F5C400", "#F5EBDD", "#8E2635"],
+    palette: ["#17151B", "#5F2DB2", "#F4EBDD", "#D96B42"],
     brief:
-      "Concept brief: design an end-to-end brand identity and launch content system for a fictional filter-coffee house expanding into contemporary urban neighbourhoods while staying rooted in the morning ritual of decoction, frothing and pouring between davara and tumbler.",
+      "Concept brief: every brand starts with a single gesture. We asked how the rhythmic pour of filter coffee could be jotted down as a graphic mark and expanded into a full identity and social launch system.",
     sections: [
       {
-        heading: "The creative challenge",
-        body: "Filter coffee is often marketed either with dated nostalgia or generic Western café minimalism. The challenge was to create a distinctive third space: unmistakably South Indian in spirit, yet sharp and systematic enough to sit alongside international specialty coffee brands.",
+        heading: "The first jot",
+        body: "Before opening a design tool, we sketched the motion of coffee pouring between two vessels. Two interlocking hand-drawn arcs became the core symbol — simple enough to stamp on a kraft cup sleeve, bold enough to anchor a storefront.",
       },
       {
-        heading: "Strategic & visual approach",
-        body: "The pour between tumbler and davara is a rhythm everyone recognises. We turned that motion into the brand's core gesture — a mark built from two interlocking arcs drawn on a kolam dot grid. A restrained palette of ink and warm ivory lets a single turmeric accent command attention across cups, retail coffee pouches and street signage.",
+        heading: "The identity system",
+        body: "High-contrast ink black, warm parchment and terracotta accents pair with expressive grotesk typography and playful hand-stamped annotations — keeping the brand tactile, human and modern.",
       },
       {
-        heading: "Social & rollout system",
-        body: "To support store footfall and retail bean sales, we structured social content around three recurring pillars: the craft of the decoction, neighbourhood culture, and the slow morning ritual — giving the brand a cohesive grid and clear storytelling cadence.",
+        heading: "Social storytelling",
+        body: "Content pillars connect the craft of the roast, neighbourhood rituals and behind-the-counter moments into an editorial social feed.",
       },
     ],
     outcomes: [
-      "Intended outcome: unified identity system spanning takeaway cups, retail pouches, menus and signage",
-      "Intended outcome: modular kolam-grid graphic language that scales across new café locations",
-      "Intended outcome: structured social content pillars connecting brand storytelling to daily footfall",
+      "Concept exploration: translating a physical ritual into a bold, scalable brand mark",
+      "Concept exploration: packaging and cup system designed for both street visibility and social sharing",
+      "Concept exploration: repeatable social content framework derived directly from the brand identity",
     ],
-    credits: ["Concept, strategy & identity — jottitstudio", "Imagery — AI-assisted visualisation for concept purposes"],
+    credits: ["Concept, strategy & identity — JOTTIT", "Imagery — concept visualisation"],
   },
   {
     slug: "nool",
     title: "Nool",
     status: "concept",
     year: "2026",
-    sector: "Fashion & Textiles",
+    sector: "Fashion & Craft",
     services: ["social-media-content", "video-photography"],
-    tagline: "Editorial content and photography system for a contemporary handloom label.",
+    tagline: "Tactile photography and editorial social storytelling for a slow-craft textile label.",
     summary:
-      "A social storytelling and visual direction concept for a fictional handloom brand — making slow textile craft desirable to a design-conscious digital audience.",
+      "A content strategy and visual direction concept showing how slow, hand-made craft can command attention on fast-moving social feeds.",
     challenge:
-      "Help a heritage handloom label justify premium pricing online by communicating the time, material quality and human skill behind every woven piece without relying on tired clichés.",
+      "Communicate the material quality, human hands and hours of work behind woven textiles to a digital-first audience without sounding like a textbook.",
     approachSummary:
-      "Developed a three-pillar editorial calendar (Thread, Hand, Wear) paired with natural-light macro photography and graphic layouts derived from korvai temple borders.",
+      "Built a three-part editorial calendar (Thread, Hand, Wear) combining macro daylight photography, sketchbook-style annotations and short-form process reels.",
     intendedOutcome:
-      "Built to elevate perceived brand value, deepen audience engagement across Instagram and lookbooks, and turn craft education into confident online purchases.",
+      "Designed to elevate perceived product value, build an engaged community of design-conscious buyers and bridge storytelling with collection drops.",
     cover: {
       src: "/images/work/nool-cover.jpg",
-      alt: "Stack of folded handwoven cotton fabrics with maroon and turmeric temple borders on an ivory backdrop in soft window light.",
+      alt: "Folded handwoven cotton fabrics with bold geometric borders on a warm parchment backdrop in daylight.",
       width: 896,
       height: 1200,
     },
     gallery: [
       {
         src: "/images/work/nool-detail.jpg",
-        alt: "Macro detail of a handloom weave with a turmeric-yellow border band.",
+        alt: "Macro detail of a woven textile border showing individual threads and texture.",
         width: 1264,
         height: 848,
       },
     ],
-    palette: ["#8E2635", "#F5C400", "#F5EBDD", "#111111"],
+    palette: ["#D96B42", "#5F2DB2", "#F4EBDD", "#17151B"],
     brief:
-      "Concept brief: “Nool” means thread in Tamil. Imagine a handloom label that wants to reach a younger, design-literate audience and convert social discovery into direct-to-consumer orders without reducing weaving to a nostalgic trope.",
+      "Concept brief: how do you make people feel the weight of a fabric through a phone screen? This concept pairs close-up visual storytelling with structured social content pillars.",
     sections: [
       {
         heading: "The creative challenge",
-        body: "On fast-moving social feeds, true handloom struggles to differentiate itself from mass-produced imitations. The brand needed a visual and editorial language that makes fabric weight, weave density and border geometry immediately felt through a screen.",
+        body: "On social media, handmade garments compete for attention in under a second. The content needed to slow the viewer down through texture, light and honest human detail.",
       },
       {
         heading: "Content architecture",
-        body: "Three pillars structure every month of content: Thread (raw cotton, dyeing and material origins), Hand (the loom and maker's rhythm captured through detail rather than staged portraits) and Wear (effortless contemporary styling for everyday life).",
+        body: "Three recurring themes guide the monthly calendar: Thread (raw materials and natural dyes), Hand (the maker's tools, sketches and rhythm) and Wear (contemporary everyday styling).",
       },
       {
-        heading: "Photography & art direction",
-        body: "Temple-border geometry is cropped and enlarged into graphic carousel frames. Photography relies on directional daylight, warm ivory backdrops and close macro textures so the integrity of the cloth leads every frame.",
+        heading: "Art direction & reels",
+        body: "Directional window light, parchment backdrops and macro lens studies let the weave speak for itself, supported by 15-second studio reels that follow a garment from sketch to stitch.",
       },
     ],
     outcomes: [
-      "Intended outcome: repeatable monthly content engine for craft-led fashion and lifestyle brands",
-      "Intended outcome: photography art direction that highlights product quality and justifies premium pricing",
-      "Intended outcome: cohesive visual bridge between organic social storytelling and product collection launches",
+      "Concept exploration: editorial social calendar built around material truth and maker stories",
+      "Concept exploration: photography direction that highlights texture and craft on mobile screens",
+      "Concept exploration: short-form video formats designed to educate and convert without hard selling",
     ],
-    credits: ["Concept & content strategy — jottitstudio", "Imagery — AI-assisted visualisation for concept purposes"],
+    credits: ["Concept & content direction — JOTTIT", "Imagery — concept visualisation"],
   },
   {
     slug: "thinai",
@@ -122,52 +122,52 @@ export const projects: Project[] = [
     year: "2026",
     sector: "Consumer Goods (D2C)",
     services: ["performance-marketing", "branding-identity"],
-    tagline: "Digital-first packaging and full-funnel paid launch for a modern millet snack.",
+    tagline: "Scroll-stopping packaging and full-funnel launch strategy for a modern snack brand.",
     summary:
-      "A packaging identity and performance marketing concept for a fictional D2C millet snack brand — built to win attention on small screens and convert first-time buyers.",
+      "A packaging identity and performance marketing concept engineered to stand out in mobile ad feeds and turn curiosity into first-time trial orders.",
     challenge:
-      "Launch a healthy ancient-grain snack in a saturated FMCG category where most health foods look dull and struggle with high customer acquisition costs online.",
+      "Launch a better-for-you ancient-grain snack in a crowded D2C category where muted health-food packaging gets ignored on paid social.",
     approachSummary:
-      "Created high-contrast, colour-blocked pouches optimised for mobile thumbnails, paired with a three-stage paid media funnel and structured creative testing matrix.",
+      "Combined high-contrast colour-blocked pouches and playful hand-drawn grain marks with a three-stage Meta and Google acquisition funnel.",
     intendedOutcome:
-      "Engineered to maximise click-through rates on paid social, clearly differentiate flavours at thumbnail size, and drive profitable trial-pack conversions.",
+      "Structured to lift ad click-through rates, make flavours instantly legible at thumbnail size and convert cold traffic through a bundle landing page.",
     cover: {
       src: "/images/work/thinai-cover.jpg",
-      alt: "Matte snack pouches in leaf green, terracotta and turmeric with abstract geometric shapes, millet grains scattered across an ivory surface.",
+      alt: "Matte snack pouches with bold geometric shapes and scattered grains on a warm parchment surface.",
       width: 896,
       height: 1200,
     },
     gallery: [
       {
         src: "/images/work/thinai-detail.jpg",
-        alt: "Three snack pouches lined up on a terracotta plinth.",
+        alt: "Three colour-blocked snack pouches arranged on a terracotta plinth.",
         width: 1264,
         height: 848,
       },
     ],
-    palette: ["#356B45", "#C66B3D", "#F5C400", "#F5EBDD"],
+    palette: ["#5F2DB2", "#D96B42", "#D9E56B", "#F4EBDD"],
     brief:
-      "Concept brief: “Thinai” is foxtail millet. How would we design and launch a direct-to-consumer millet snack brand that stands out on crowded digital shelves, communicates flavour first, and acquires customers efficiently?",
+      "Concept brief: for a digital-first food brand, the pack is the ad. We designed the packaging and the performance marketing funnel simultaneously so creative and media reinforce each other.",
     sections: [
       {
-        heading: "The creative challenge",
-        body: "For D2C food brands, the packaging is the primary performance ad unit. If a pouch looks cluttered or muted in a 300-pixel mobile feed, paid media efficiency drops before the campaign even begins.",
+        heading: "Packaging built for the feed",
+        body: "Each flavour owns a bold colour block and an expressive graphic symbol so the pouch reads clearly even as a 300-pixel thumbnail in a mobile shopping carousel.",
       },
       {
-        heading: "Packaging built for screens and shelves",
-        body: "Each flavour variant owns a single decisive colour — leaf green, terracotta or turmeric — paired with bold grain-inspired geometry and clear typography. The packs read instantly in quick-commerce grids and paid social carousels.",
+        heading: "Full-funnel campaign plan",
+        body: "Planned across three stages: pattern-interrupt short videos for awareness, taste and ingredient breakdowns for consideration, and a starter-pack offer for conversion.",
       },
       {
-        heading: "Performance campaign & testing architecture",
-        body: "The launch plan connects creative and media across three stages: thumb-stopping short video hooks for discovery, ingredient and crunch demonstrations for consideration, and a bundled trial-pack landing page for conversion — testing taste, protein and heritage angles in parallel.",
+        heading: "Creative testing matrix",
+        body: "Instead of betting the budget on one hero commercial, the concept maps out modular hooks — crunch, convenience, clean ingredients and flavour — to test and optimise against real audience response.",
       },
     ],
     outcomes: [
-      "Intended outcome: mobile-first packaging system designed to lift ad click-through and shelf recall",
-      "Intended outcome: full-funnel paid acquisition blueprint connecting Meta/Google ads to a conversion landing page",
-      "Intended outcome: structured creative testing matrix to identify winning buyer hooks early",
+      "Concept exploration: D2C packaging designed simultaneously for retail shelves and mobile ad feeds",
+      "Concept exploration: integrated Meta & Google campaign architecture connected to a custom landing page",
+      "Concept exploration: structured creative testing framework to lower acquisition cost over time",
     ],
-    credits: ["Concept, packaging & media planning — jottitstudio", "Imagery — AI-assisted visualisation for concept purposes"],
+    credits: ["Concept, packaging & media planning — JOTTIT", "Imagery — concept visualisation"],
   },
   {
     slug: "malli",
@@ -176,105 +176,105 @@ export const projects: Project[] = [
     year: "2026",
     sector: "Beauty & Fragrance",
     services: ["video-photography", "social-media-content"],
-    tagline: "Art-directed campaign film and stills for a contemporary jasmine fragrance.",
+    tagline: "Chiaroscuro campaign film and still-life photography for a botanical fragrance.",
     summary:
-      "A multi-format film and photography campaign concept exploring Madurai malligai (jasmine) for a modern luxury fragrance label.",
+      "An art-directed film and photography concept translating the mood of night-blooming jasmine into a contemporary luxury campaign.",
     challenge:
-      "Position a deeply familiar South Indian floral note as an internationally desirable luxury fragrance through restrained, high-impact visual storytelling.",
+      "Make viewers feel the scent, warmth and atmosphere of a botanical fragrance through purely visual and sonic storytelling.",
     approachSummary:
-      "Replaced conventional festival tropes with dramatic chiaroscuro lighting, macro botanical studies and a single-shoot production plan yielding hero film, stills and vertical cutdowns.",
+      "Crafted a high-contrast chiaroscuro lighting direction, pairing slow macro botanical film studies with sculpted still-life product photography.",
     intendedOutcome:
-      "Designed to give a luxury beauty launch a gallery-grade visual identity and a complete library of launch assets across web, retail and paid social.",
+      "Planned so a single coordinated shoot produces a 30-second hero film, vertical social cutdowns, e-commerce product stills and launch posters.",
     cover: {
       src: "/images/work/malli-cover.jpg",
-      alt: "Minimal glass perfume bottle with strands of jasmine flowers on a black background, lit by a single dramatic light.",
+      alt: "Minimal glass perfume bottle with white jasmine blossoms on a deep ink background lit by a warm beam.",
       width: 896,
       height: 1200,
     },
     gallery: [
       {
         src: "/images/work/malli-detail.jpg",
-        alt: "Cinematic still of jasmine buds on dark stone with a sliver of warm yellow light.",
+        alt: "Cinematic close-up of white buds on dark stone in dramatic evening light.",
         width: 1264,
         height: 848,
       },
     ],
-    palette: ["#111111", "#F5EBDD", "#F5C400"],
+    palette: ["#17151B", "#F4EBDD", "#5F2DB2", "#D9E56B"],
     brief:
-      "Concept brief: create a launch campaign for a fictional fine fragrance built around jasmine — worn daily across South India — elevating a familiar cultural memory into a modern international luxury object.",
+      "Concept brief: create a campaign world for a modern botanical fragrance where light, shadow and texture do the talking — planned from storyboard sketches to multi-format delivery.",
     sections: [
       {
-        heading: "The creative challenge",
-        body: "Fragrance cannot be sampled through a screen; the imagery has to make the viewer feel the scent's temperature, texture and mood. Our goal was to evoke evening warmth and quiet luxury without visual clutter.",
+        heading: "From storyboard jot to set",
+        body: "Every frame was sketched first in charcoal and chalk to lock in the balance of deep shadow and luminous botanical highlights before stepping onto set.",
       },
       {
-        heading: "Film & photography direction",
-        body: "We focused on stark contrasts: luminous white jasmine buds against dark stone, slow macro movement and a single warm shaft of evening light. The 30-second hero film is storyboarded alongside 15-second and 6-second vertical cutdowns so every channel launches in sync.",
+        heading: "Film & motion direction",
+        body: "A 30-second launch film built from tactile macro shots and atmospheric sound design, accompanied by 15-second and 6-second vertical edits tailored for reels and paid social.",
       },
       {
-        heading: "Multi-channel asset delivery",
-        body: "By planning crops, aspect ratios and negative space before camera roll, one coordinated shoot delivers website hero banners, product page stills, print lookbooks and high-retention social video ads.",
+        heading: "Still-life library",
+        body: "Shot on dark stone and textured paper, the still photography gives the brand a cohesive gallery-grade look across product pages, lookbooks and outdoor posters.",
       },
     ],
     outcomes: [
-      "Intended outcome: distinctive luxury art direction rooted in contemporary South Indian aesthetics",
-      "Intended outcome: single-production efficiency delivering hero film, stills and paid social cutdowns",
-      "Intended outcome: cohesive visual presence across e-commerce product pages and launch campaigns",
+      "Concept exploration: translating charcoal storyboard sketches into luxury film & still-life direction",
+      "Concept exploration: single-shoot production workflow yielding film, reels and e-commerce photography",
+      "Concept exploration: distinctive visual restraint that separates a brand from category clichés",
     ],
-    credits: ["Concept & art direction — jottitstudio", "Imagery — AI-assisted visualisation for concept purposes"],
+    credits: ["Concept & art direction — JOTTIT", "Imagery — concept visualisation"],
   },
   {
     slug: "veedu",
     title: "Veedu",
     status: "concept",
     year: "2026",
-    sector: "Architecture & Real Estate",
+    sector: "Architecture & Spaces",
     services: ["website-development", "branding-identity"],
-    tagline: "High-converting digital portfolio and identity for a courtyard-home architecture studio.",
+    tagline: "An architectural portfolio website where spatial sketches meet modern web engineering.",
     summary:
-      "A bespoke website and brand system concept for a fictional architecture practice — designed to turn portfolio browsing into qualified project enquiries.",
+      "A digital experience and visual identity concept for an architecture studio — pairing floor-plan sketch annotations with calm, high-speed project galleries.",
     challenge:
-      "Give a high-ticket architecture practice a digital presence that matches the spatial calm of its homes while guiding prospective homeowners smoothly toward a consultation.",
+      "Give an architecture practice a digital home that honours both their early pencil spatial sketches and their finished photographic work while driving client enquiries.",
     approachSummary:
-      "Structured the site navigation around the spatial sequence of a South Indian courtyard house, pairing fast-loading editorial galleries with contextual enquiry pathways.",
+      "Designed an interactive editorial website where visitors can toggle between the architect's initial hand-drawn plan and the completed residence, backed by a fast Next.js + CMS architecture.",
     intendedOutcome:
-      "Built to attract better-fit residential clients, showcase large-format architectural photography without sacrificing mobile speed, and streamline studio enquiries.",
+      "Engineered to showcase high-resolution photography with zero layout shift, communicate the studio's design thinking and convert visitors into consultation briefs.",
     cover: {
       src: "/images/work/veedu-cover.jpg",
-      alt: "Laptop and phone on an ivory desk showing a minimal website with a courtyard house photograph, beside a terracotta tile and a pillar shadow.",
+      alt: "Laptop and mobile screen on a studio desk displaying an editorial architecture website beside material samples.",
       width: 896,
       height: 1200,
     },
     gallery: [
       {
         src: "/images/work/veedu-detail.jpg",
-        alt: "Interior of a contemporary courtyard house with oxide floor, wooden pillars and a shaft of sunlight.",
+        alt: "Sunlit courtyard interior with warm terracotta floors and timber columns.",
         width: 1264,
         height: 848,
       },
     ],
-    palette: ["#F5EBDD", "#C66B3D", "#111111", "#356B45"],
+    palette: ["#F4EBDD", "#D96B42", "#17151B", "#5F2DB2"],
     brief:
-      "Concept brief: “Veedu” means home. Design a digital identity and portfolio website for an architecture studio known for contemporary courtyard residences, ensuring the site builds authority and captures qualified client briefs.",
+      "Concept brief: every building begins as a pencil line on tracing paper. We designed a digital portfolio that celebrates both the first architectural jot and the finished space.",
     sections: [
       {
-        heading: "The creative challenge",
-        body: "Architecture websites often fall into two traps: heavy, slow-loading slideshows that frustrate mobile visitors, or sterile corporate templates that strip the emotion out of the work.",
+        heading: "Story-driven site architecture",
+        body: "Rather than a static grid of thumbnails, the site guides visitors from the studio's spatial philosophy into immersive case studies that pair initial sketchbook elevations with finished photography.",
       },
       {
-        heading: "UX architecture & conversion flow",
-        body: "The site follows the plan of a courtyard house: an unhurried threshold, an open central gallery filterable by typology and climate response, and clear project case studies that end with a tailored consultation brief.",
+        heading: "UI/UX & interaction design",
+        body: "Generous editorial whitespace, crisp typographic hierarchy and subtle scroll transitions keep the focus on light, material and proportion across desktop and mobile.",
       },
       {
-        heading: "Performance & CMS engineering",
-        body: "Engineered around Next.js image optimisation, semantic HTML and a structured headless CMS so the practice can publish new residences, drawings and essays in minutes while keeping Core Web Vitals green.",
+        heading: "Modern web engineering",
+        body: "Planned around responsive Next.js image optimisation, accessible keyboard navigation and a structured CMS so the practice can publish new projects effortlessly.",
       },
     ],
     outcomes: [
-      "Intended outcome: bespoke digital experience that elevates authority for high-value service businesses",
-      "Intended outcome: frictionless mobile and desktop portfolio browsing with integrated lead capture",
-      "Intended outcome: scalable headless CMS structure allowing effortless in-house project updates",
+      "Concept exploration: digital storytelling that connects initial sketches to finished architectural work",
+      "Concept exploration: responsive, performance-first UI/UX tailored for visual portfolios",
+      "Concept exploration: frictionless project enquiry flow integrated into every case study",
     ],
-    credits: ["Concept, UX, UI & development planning — jottitstudio", "Imagery — AI-assisted visualisation for concept purposes"],
+    credits: ["Concept, UX/UI & web architecture — JOTTIT", "Imagery — concept visualisation"],
   },
 ];

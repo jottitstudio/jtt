@@ -29,8 +29,10 @@ export async function POST(request: Request) {
   const payload = {
     name: data.name.trim(),
     email: data.email.trim(),
+    phone: data.phone.trim(),
     company: data.company.trim(),
     services: data.services,
+    budget: data.budget,
     timeline: data.timeline,
     message: data.message.trim(),
     receivedAt: new Date().toISOString(),

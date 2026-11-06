@@ -8,7 +8,7 @@ import { getProjects, getServices } from "@/lib/cms";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Selected concept projects by jottitstudio across branding, social content, performance marketing, film, photography and web.",
+    "Selected concept projects by JOTTIT across branding, social media content, performance marketing, film, photography and web.",
   alternates: { canonical: "/work" },
 };
 
@@ -17,39 +17,44 @@ export default async function WorkPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our work"
-        tamil="படைப்புகள்"
-        lines={["Work that", "earns attention."]}
+        eyebrow="Selected Work"
+        note="From first sketch to real world"
+        lines={["IDEAS", "MADE REAL."]}
         intro={
           <>
             <p>
-              A growing collection of self-initiated studies. Each one is a{" "}
-              <strong className="font-medium text-ink">clearly labelled concept project</strong> — a fictional brief we
-              set ourselves to show how we think and make.
+              A curated collection of studio studies exploring how early jots become complete brand identities,
+              campaigns and digital products. Each piece below is a{" "}
+              <strong className="font-semibold text-ink">clearly labelled concept project</strong>.
             </p>
-            <p className="mt-4 text-base text-ink/65">
-              Client case studies will be added here as they are approved for publication. We never present concept work
-              as client work, and we don&apos;t claim results for it.
+            <p className="mt-4 text-base text-ink/70">
+              Verified client case studies will be added as engagements are approved for publication. We never present
+              concept explorations as client work or fabricate metrics.
             </p>
           </>
         }
       />
-      <section aria-label="Projects" className="wrap pb-28 md:pb-40">
+      <section aria-label="Projects" className="wrap py-20 md:py-32">
         <WorkGrid projects={projects} services={services.map(({ slug, shortTitle }) => ({ slug, shortTitle }))} />
       </section>
-      <section aria-labelledby="work-next-title" className="border-t border-ink/15 bg-turmeric py-20 text-ink md:py-28">
+      <section
+        aria-labelledby="work-next-title"
+        className="on-dark border-t border-ink bg-purple py-20 text-paper md:py-28"
+      >
         <div className="wrap flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <Eyebrow tamil="வணக்கம்">Your brand next</Eyebrow>
-            <h2 id="work-next-title" className="t-h2 mt-6 max-w-[16ch]">
-              Have a project in mind?
+            <Eyebrow note="Your Idea Next" className="text-paper/80">
+              Got an idea? JOTTIT.
+            </Eyebrow>
+            <h2 id="work-next-title" className="t-h2 mt-6 max-w-[16ch] text-paper">
+              Let&apos;s turn your thought into something worth remembering.
             </h2>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/contact" variant="solid">
-              Start a Project
+            <ButtonLink href="/contact" variant="lime">
+              Let&apos;s Start Something
             </ButtonLink>
-            <ButtonLink href="/services" variant="outline">
+            <ButtonLink href="/services" variant="outline-light">
               Explore Services
             </ButtonLink>
           </div>

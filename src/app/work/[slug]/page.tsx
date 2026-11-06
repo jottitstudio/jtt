@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
     description: project.summary,
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
-      title: `${project.title} — ${label} by jottitstudio`,
+      title: `${project.title} — ${label} by JOTTIT`,
       description: project.summary,
       images: [{ url: project.cover.src, width: project.cover.width, height: project.cover.height, alt: project.cover.alt }],
     },
@@ -52,7 +52,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li aria-current="page" className="text-ink">
+              <li aria-current="page" className="text-purple">
                 {project.title}
               </li>
             </ol>
@@ -68,16 +68,16 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
             <RevealLines immediate lines={[project.title]} />
           </h1>
 
-          <div className="mt-10 grid gap-10 border-t border-ink pt-8 md:mt-14 lg:grid-cols-12 lg:gap-x-8">
+          <div className="mt-10 grid gap-10 border-t-2 border-ink pt-8 md:mt-14 lg:grid-cols-12 lg:gap-x-8">
             <Reveal delay={0.25} className="lg:col-span-6">
               <p className="t-lead">{project.tagline}</p>
-              <p className="mt-4 text-ink/70">{project.summary}</p>
+              <p className="mt-4 text-ink/75">{project.summary}</p>
             </Reveal>
             <Reveal delay={0.35} className="lg:col-span-5 lg:col-start-8">
               <dl className="grid grid-cols-2 gap-x-6 gap-y-6 text-sm">
                 <div>
                   <dt className="t-eyebrow text-stone">Type</dt>
-                  <dd className="mt-1">{isConcept ? "Self-initiated concept" : "Client project"}</dd>
+                  <dd className="mt-1 font-medium">{isConcept ? "Self-initiated concept" : "Client project"}</dd>
                 </div>
                 <div>
                   <dt className="t-eyebrow text-stone">Year</dt>
@@ -105,7 +105,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
                   <dt className="t-eyebrow text-stone">Palette</dt>
                   <dd className="mt-2 flex gap-1.5">
                     {project.palette.map((c) => (
-                      <span key={c} className="block size-8 border border-ink/15" style={{ background: c }} title={c}>
+                      <span key={c} className="block size-8 border border-ink/25" style={{ background: c }} title={c}>
                         <span className="sr-only">{c}</span>
                       </span>
                     ))}
@@ -119,7 +119,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
 
       <div className="wrap mt-16 grid gap-6 md:mt-24 lg:grid-cols-12 lg:items-end lg:gap-8">
         <Reveal y={40} as="figure" className="lg:col-span-5">
-          <div className="relative aspect-[3/4] overflow-hidden bg-ivory-deep">
+          <div className="relative aspect-[3/4] overflow-hidden border-2 border-ink bg-parchment">
             <Image
               src={project.cover.src}
               alt={project.cover.alt}
@@ -132,7 +132,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
         </Reveal>
         {project.gallery[0] && (
           <Reveal y={40} delay={0.1} as="figure" className="lg:col-span-7">
-            <div className="relative aspect-[3/2] overflow-hidden bg-ivory-deep">
+            <div className="relative aspect-[3/2] overflow-hidden border-2 border-ink bg-parchment">
               <Image
                 src={project.gallery[0].src}
                 alt={project.gallery[0].alt}
@@ -153,13 +153,13 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
       <section aria-labelledby="brief-title" className="wrap py-24 md:py-32">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-4">
-            <Eyebrow>{isConcept ? "The concept brief" : "The brief"}</Eyebrow>
+            <Eyebrow note="First Jot">{isConcept ? "The concept brief" : "The brief"}</Eyebrow>
           </div>
           <Reveal className="lg:col-span-7 lg:col-start-6">
             <h2 id="brief-title" className="sr-only">
               Brief
             </h2>
-            <p className="font-display text-[clamp(1.4rem,2.4vw,2.2rem)] font-medium leading-[1.25] tracking-[-0.02em]">
+            <p className="font-display text-[clamp(1.4rem,2.4vw,2.2rem)] font-semibold leading-[1.25] tracking-[-0.02em]">
               {project.brief}
             </p>
           </Reveal>
@@ -173,7 +173,7 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
           {project.sections.map((s, i) => (
             <div key={s.heading} className="grid gap-6 lg:grid-cols-12 lg:gap-x-8">
               <Reveal className="lg:col-span-4">
-                <span className="font-display text-sm tabular-nums text-stone">0{i + 1}</span>
+                <span className="font-display text-sm font-bold tabular-nums text-purple">0{i + 1}</span>
                 <h2 className="t-h3 mt-3">{s.heading}</h2>
               </Reveal>
               <Reveal delay={0.1} className="lg:col-span-6 lg:col-start-6">
@@ -184,11 +184,11 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
         </div>
       </section>
 
-      <section aria-labelledby="explores-title" className="on-dark bg-ink py-24 text-ivory md:py-32">
+      <section aria-labelledby="explores-title" className="on-dark bg-purple py-24 text-paper md:py-32">
         <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-4">
-            <Eyebrow className="text-ivory/60">{isConcept ? "What this concept explores" : "Outcomes"}</Eyebrow>
-            <h2 id="explores-title" className="t-h2 mt-8">
+            <Eyebrow className="text-paper/80">{isConcept ? "What this concept explores" : "Outcomes"}</Eyebrow>
+            <h2 id="explores-title" className="t-h2 mt-8 text-paper">
               {isConcept ? "Explores" : "Outcomes"}
             </h2>
           </div>
@@ -198,16 +198,16 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
                 as="li"
                 key={o}
                 delay={i * 0.06}
-                className="grid grid-cols-[3rem_1fr] border-b border-ivory/15 py-6 first:border-t"
+                className="grid grid-cols-[3rem_1fr] border-b border-paper/20 py-6 first:border-t"
               >
-                <span className="font-display text-sm tabular-nums text-turmeric">0{i + 1}</span>
-                <span className="font-display text-xl tracking-[-0.01em] md:text-2xl">{o}</span>
+                <span className="font-display text-sm font-bold tabular-nums text-lime">0{i + 1}</span>
+                <span className="font-display text-xl tracking-[-0.01em] text-paper md:text-2xl">{o}</span>
               </Reveal>
             ))}
           </ul>
           <div className="lg:col-span-7 lg:col-start-6">
-            <h3 className="t-eyebrow text-ivory/50">Credits</h3>
-            <ul className="mt-3 space-y-1 text-sm text-ivory/70">
+            <h3 className="t-eyebrow text-paper/60">Credits</h3>
+            <ul className="mt-3 space-y-1 text-sm text-paper/80">
               {project.credits.map((c) => (
                 <li key={c}>{c}</li>
               ))}
@@ -216,21 +216,32 @@ async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
         </div>
       </section>
 
-      <section aria-label="Start a similar project" className="wrap flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-center">
-        <p className="t-h3 max-w-xl">Have a brand that deserves this level of thinking?</p>
-        <ButtonLink href="/contact">Start a Project</ButtonLink>
+      <section
+        aria-label="Start a similar project"
+        className="wrap flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-center"
+      >
+        <p className="t-h3 max-w-xl">Have an idea that deserves this level of creative thinking?</p>
+        <ButtonLink href="/contact" variant="purple">
+          Start a Project
+        </ButtonLink>
       </section>
 
-      <Link href={`/work/${next.slug}`} className="group relative block overflow-hidden bg-ink text-ivory">
+      <Link href={`/work/${next.slug}`} className="group relative block overflow-hidden bg-ink text-paper">
         <div className="absolute inset-0 opacity-40 transition-opacity duration-700 group-hover:opacity-60">
-          <Image src={next.cover.src} alt="" fill sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[var(--ease-studio)] group-hover:scale-105" />
+          <Image
+            src={next.cover.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover transition-transform duration-[1.6s] ease-[var(--ease-studio)] group-hover:scale-105"
+          />
         </div>
         <div className="wrap relative flex items-end justify-between gap-6 py-24 md:py-36">
           <div>
-            <p className="t-eyebrow text-ivory/70">Next project</p>
-            <p className="t-h1 mt-4">{next.title}</p>
+            <p className="t-eyebrow text-paper/75">Next project</p>
+            <p className="t-h1 mt-4 text-paper">{next.title}</p>
           </div>
-          <span className="inline-flex size-14 shrink-0 items-center justify-center bg-turmeric text-ink md:size-20">
+          <span className="inline-flex size-14 shrink-0 items-center justify-center bg-lime text-ink md:size-20">
             <Arrow className="size-6 transition-transform duration-500 group-hover:-rotate-45" />
           </span>
         </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useId, useRef, useState, type FormEvent } from "react";
 import {
   MESSAGE_MAX,
+  budgetOptions,
   enquiryFieldOrder,
   enquiryServiceOptions,
   timelineOptions,
@@ -18,8 +19,10 @@ import { Arrow } from "@/components/art/Motifs";
 const initial: EnquiryData = {
   name: "",
   email: "",
+  phone: "",
   company: "",
   services: [],
+  budget: "",
   timeline: "",
   message: "",
   consent: false,
@@ -29,16 +32,18 @@ const initial: EnquiryData = {
 const fieldLabels: Record<EnquiryField, string> = {
   name: "Name",
   email: "Email",
-  company: "Company",
-  services: "Services",
+  phone: "Phone",
+  company: "Company or brand",
+  services: "Service required",
+  budget: "Approximate budget",
   timeline: "Timeline",
-  message: "Project details",
+  message: "Project description",
   consent: "Consent",
 };
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" }) {
+export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" | "purple" }) {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
   const id = (f: string) => `${uid}-${f}`;
   const [data, setData] = useState<EnquiryData>(initial);
@@ -115,7 +120,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
   const describedBy = (f: EnquiryField, hint?: boolean) =>
     [hint ? id(`${f}-hint`) : null, invalid(f) ? id(`${f}-error`) : null].filter(Boolean).join(" ") || undefined;
 
-  const toneClass = tone === "turmeric" ? "tone-turmeric" : "";
+  const toneClass = tone === "purple" ? "tone-purple" : "";
 
   if (status === "success") {
     return (
@@ -123,9 +128,9 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         ref={successRef}
         tabIndex={-1}
         role="status"
-        className={`border border-ink/20 p-8 md:p-12 ${toneClass}`}
+        className={`border-2 border-ink bg-parchment p-8 text-ink md:p-12 ${toneClass}`}
       >
-        <p className="t-eyebrow">Enquiry received</p>
+        <p className="t-eyebrow text-purple">Enquiry received</p>
         <h3 className="t-h3 mt-4">Thank you, {data.name.trim().split(" ")[0]}.</h3>
         <p className="mt-4 max-w-md">
           Your project details are with us. We&apos;ll review them and reply to{" "}
@@ -133,7 +138,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </p>
         <button
           type="button"
-          className="link-line mt-8 font-display font-medium"
+          className="link-line mt-8 font-display font-bold uppercase tracking-[0.06em]"
           onClick={() => {
             setData(initial);
             setTouched({});
@@ -141,7 +146,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
             setStatus("idle");
           }}
         >
-          Send another enquiry
+          Jot another enquiry
         </button>
       </div>
     );
@@ -149,8 +154,8 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
 
   const errorText = (f: EnquiryField) =>
     invalid(f) ? (
-      <p id={id(`${f}-error`)} className="mt-2 flex items-start gap-2 text-sm font-medium text-maroon">
-        <span aria-hidden="true" className="mt-[0.35em] inline-block size-2 shrink-0 rotate-45 bg-maroon" />
+      <p id={id(`${f}-error`)} className="mt-2 flex items-start gap-2 text-sm font-medium text-terracotta">
+        <span aria-hidden="true" className="mt-[0.35em] inline-block size-2 shrink-0 rotate-45 bg-terracotta" />
         {errors[f]}
       </p>
     ) : null;
@@ -162,14 +167,14 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
       action="/api/enquiry"
       method="post"
       aria-describedby={id("required-note")}
-      className={`${toneClass}`}
+      className={toneClass}
     >
       {showSummary && errorList.length > 0 && (
         <div
           ref={summaryRef}
           tabIndex={-1}
           role="alert"
-          className="mb-10 border-l-2 border-maroon bg-maroon/5 p-5 outline-none"
+          className="mb-10 border-l-4 border-terracotta bg-terracotta/10 p-5 outline-none"
         >
           <p className="font-display font-semibold">
             Please check {errorList.length === 1 ? "one field" : `${errorList.length} fields`} before sending:
@@ -193,7 +198,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </div>
       )}
 
-      <p id={id("required-note")} className="mb-8 text-sm opacity-70">
+      <p id={id("required-note")} className="mb-8 text-sm opacity-75">
         Fields marked <span aria-hidden="true">*</span>
         <span className="sr-only">with an asterisk</span> are required.
       </p>
@@ -222,6 +227,27 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </div>
 
         <div>
+          <label htmlFor={id("company")} className="t-eyebrow block">
+            Company or brand <span className="normal-case tracking-normal opacity-60">(optional)</span>
+          </label>
+          <input
+            id={id("company")}
+            name="company"
+            type="text"
+            autoComplete="organization"
+            maxLength={120}
+            className="field-input"
+            value={data.company}
+            aria-invalid={invalid("company") || undefined}
+            aria-describedby={describedBy("company")}
+            onChange={(e) => update("company", e.target.value)}
+            onBlur={() => blur("company")}
+            enterKeyHint="next"
+          />
+          {errorText("company")}
+        </div>
+
+        <div>
           <label htmlFor={id("email")} className="t-eyebrow block">
             Email <span aria-hidden="true">*</span>
           </label>
@@ -247,25 +273,26 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
           {errorText("email")}
         </div>
 
-        <div className="md:col-span-2">
-          <label htmlFor={id("company")} className="t-eyebrow block">
-            Company or brand <span className="normal-case tracking-normal opacity-60">(optional)</span>
+        <div>
+          <label htmlFor={id("phone")} className="t-eyebrow block">
+            Phone / WhatsApp <span className="normal-case tracking-normal opacity-60">(optional)</span>
           </label>
           <input
-            id={id("company")}
-            name="company"
-            type="text"
-            autoComplete="organization"
-            maxLength={120}
+            id={id("phone")}
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            maxLength={25}
             className="field-input"
-            value={data.company}
-            aria-invalid={invalid("company") || undefined}
-            aria-describedby={describedBy("company")}
-            onChange={(e) => update("company", e.target.value)}
-            onBlur={() => blur("company")}
+            value={data.phone}
+            aria-invalid={invalid("phone") || undefined}
+            aria-describedby={describedBy("phone")}
+            onChange={(e) => update("phone", e.target.value)}
+            onBlur={() => blur("phone")}
             enterKeyHint="next"
           />
-          {errorText("company")}
+          {errorText("phone")}
         </div>
 
         <fieldset
@@ -274,9 +301,9 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
           aria-invalid={invalid("services") || undefined}
         >
           <legend className="t-eyebrow mb-1">
-            What can we help with? <span aria-hidden="true">*</span>
+            Service required <span aria-hidden="true">*</span>
           </legend>
-          <p id={id("services-hint")} className="mb-4 text-sm opacity-70">
+          <p id={id("services-hint")} className="mb-4 text-sm opacity-75">
             Select all that apply.
           </p>
           <div className="flex flex-wrap gap-2.5">
@@ -289,9 +316,9 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
                   value={opt.value}
                   checked={data.services.includes(opt.value)}
                   onChange={() => toggleService(opt.value)}
-                  className="chip-input peer sr-only"
+                  className="chip-input peer visually-hidden"
                 />
-                <span className="chip inline-flex min-h-11 items-center gap-2.5 border border-current/30 px-4 py-2 text-[0.95rem] transition-colors duration-300 hover:border-current">
+                <span className="chip inline-flex min-h-11 items-center gap-2.5 border border-current/35 px-4 py-2 text-[0.95rem] transition-colors duration-300 hover:border-current">
                   <span aria-hidden="true" className="chip-mark inline-block size-2.5 rotate-45 border border-current transition-colors" />
                   {opt.label}
                 </span>
@@ -299,6 +326,30 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
             ))}
           </div>
           {errorText("services")}
+        </fieldset>
+
+        <fieldset className="md:col-span-2">
+          <legend className="t-eyebrow mb-4">
+            Approximate budget <span className="normal-case tracking-normal opacity-60">(optional)</span>
+          </legend>
+          <div className="flex flex-wrap gap-2.5">
+            {budgetOptions.map((opt) => (
+              <label key={opt.value} className="relative cursor-pointer">
+                <input
+                  type="radio"
+                  name="budget"
+                  value={opt.value}
+                  checked={data.budget === opt.value}
+                  onChange={() => update("budget", opt.value)}
+                  className="chip-input visually-hidden"
+                />
+                <span className="chip inline-flex min-h-11 items-center gap-2.5 border border-current/35 px-4 py-2 text-[0.95rem] transition-colors duration-300 hover:border-current">
+                  <span aria-hidden="true" className="chip-mark inline-block size-2.5 rounded-full border border-current transition-colors" />
+                  {opt.label}
+                </span>
+              </label>
+            ))}
+          </div>
         </fieldset>
 
         <fieldset className="md:col-span-2">
@@ -314,9 +365,9 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
                   value={opt.value}
                   checked={data.timeline === opt.value}
                   onChange={() => update("timeline", opt.value)}
-                  className="chip-input sr-only"
+                  className="chip-input visually-hidden"
                 />
-                <span className="chip inline-flex min-h-11 items-center gap-2.5 border border-current/30 px-4 py-2 text-[0.95rem] transition-colors duration-300 hover:border-current">
+                <span className="chip inline-flex min-h-11 items-center gap-2.5 border border-current/35 px-4 py-2 text-[0.95rem] transition-colors duration-300 hover:border-current">
                   <span aria-hidden="true" className="chip-mark inline-block size-2.5 rounded-full border border-current transition-colors" />
                   {opt.label}
                 </span>
@@ -328,14 +379,14 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         <div className="md:col-span-2">
           <div className="flex items-baseline justify-between gap-4">
             <label htmlFor={id("message")} className="t-eyebrow block">
-              Tell us about the project <span aria-hidden="true">*</span>
+              Project description <span aria-hidden="true">*</span>
             </label>
             <span className="text-xs tabular-nums opacity-60" aria-hidden="true">
               {data.message.length}/{MESSAGE_MAX}
             </span>
           </div>
-          <p id={id("message-hint")} className="mt-1 text-sm opacity-70">
-            What you&apos;re building, where you are now, and what success would look like. A rough budget helps too.
+          <p id={id("message-hint")} className="mt-1 text-sm opacity-75">
+            Jot down what you&apos;re building, where you are now, and what success looks like.
           </p>
           <textarea
             id={id("message")}
@@ -354,7 +405,7 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         </div>
 
         {/* Honeypot — hidden from people and assistive tech */}
-        <div aria-hidden="true" className="sr-only">
+        <div aria-hidden="true" className="visually-hidden">
           <label htmlFor={id("website")}>Leave this field empty</label>
           <input
             id={id("website")}
@@ -383,10 +434,10 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
                 setTouched((t) => ({ ...t, consent: true }));
                 setErrors((er) => ({ ...er, consent: validateField("consent", next) }));
               }}
-              className="mt-0.5 size-6 shrink-0 accent-ink"
+              className="mt-0.5 size-6 shrink-0 accent-purple"
             />
             <span className="text-sm leading-relaxed">
-              I agree to jottitstudio using these details to respond to my enquiry, as described in the{" "}
+              I agree to JOTTIT using these details to respond to my enquiry, as described in the{" "}
               <Link href="/privacy" className="underline underline-offset-4">
                 Privacy Policy
               </Link>
@@ -401,22 +452,20 @@ export function EnquiryForm({ tone = "ivory" }: { tone?: "ivory" | "turmeric" })
         <button
           type="submit"
           disabled={status === "submitting"}
-          className={`group relative inline-flex min-h-14 w-full items-center justify-between gap-8 overflow-hidden px-7 font-display text-lg font-medium transition-colors duration-500 sm:w-auto ${
-            tone === "turmeric"
-              ? "bg-ink text-ivory hover:bg-ivory hover:text-ink"
-              : "bg-ink text-ivory hover:bg-turmeric hover:text-ink"
-          } disabled:cursor-wait disabled:opacity-70`}
+          className="group relative inline-flex min-h-14 w-full items-center justify-between gap-8 overflow-hidden border-2 border-ink bg-purple px-7 font-display text-base font-bold uppercase tracking-[0.06em] text-paper transition-colors duration-500 hover:bg-lime hover:text-ink sm:w-auto disabled:cursor-wait disabled:opacity-70"
         >
-          <span>{status === "submitting" ? "Sending…" : "Send enquiry"}</span>
+          <span>{status === "submitting" ? "Sending…" : "Let\u2019s Start Something"}</span>
           <Arrow className="size-5 transition-transform duration-500 group-hover:translate-x-1" />
         </button>
-        <p className="text-sm opacity-70">We usually reply within <span className="italic">[response time — to be confirmed]</span>.</p>
+        <p className="text-sm opacity-75">
+          We usually reply within <span className="italic">[response time — to be confirmed]</span>.
+        </p>
       </div>
 
       <div aria-live="polite" className="mt-4 min-h-6">
         {status === "error" && serverError && (
-          <p className="flex items-start gap-2 font-medium text-maroon">
-            <span aria-hidden="true" className="mt-[0.4em] inline-block size-2 shrink-0 rotate-45 bg-maroon" />
+          <p className="flex items-start gap-2 font-medium text-terracotta">
+            <span aria-hidden="true" className="mt-[0.4em] inline-block size-2 shrink-0 rotate-45 bg-terracotta" />
             {serverError}
           </p>
         )}

@@ -13,6 +13,13 @@ export const enquiryServiceOptions: { value: ServiceSlug | "not-sure"; label: st
   { value: "not-sure", label: "Not sure yet" },
 ];
 
+export const budgetOptions = [
+  { value: "under-1l", label: "Starter / Single scope" },
+  { value: "1l-3l", label: "Growth / Multi-discipline" },
+  { value: "3l-plus", label: "Full brand & launch partner" },
+  { value: "discussing", label: "Let's discuss scope first" },
+] as const;
+
 export const timelineOptions = [
   { value: "asap", label: "As soon as possible" },
   { value: "1-3-months", label: "In 1–3 months" },
@@ -23,8 +30,10 @@ export const timelineOptions = [
 export interface EnquiryData {
   name: string;
   email: string;
+  phone: string;
   company: string;
   services: string[];
+  budget: string;
   timeline: string;
   message: string;
   consent: boolean;
@@ -32,13 +41,23 @@ export interface EnquiryData {
   website: string;
 }
 
-export type EnquiryField = "name" | "email" | "company" | "services" | "timeline" | "message" | "consent";
+export type EnquiryField =
+  | "name"
+  | "email"
+  | "phone"
+  | "company"
+  | "services"
+  | "budget"
+  | "timeline"
+  | "message"
+  | "consent";
 export type EnquiryErrors = Partial<Record<EnquiryField, string>>;
 
 export const MESSAGE_MIN = 30;
 export const MESSAGE_MAX = 2000;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_RE = /^[+\d\s().-]{7,25}$/;
 
 export function validateField(field: EnquiryField, data: EnquiryData): string | undefined {
   switch (field) {
@@ -55,6 +74,11 @@ export function validateField(field: EnquiryField, data: EnquiryData): string | 
       if (!EMAIL_RE.test(v) || v.length > 254) return "That email doesn't look quite right — e.g. name@company.com.";
       return;
     }
+    case "phone": {
+      const v = data.phone.trim();
+      if (v && !PHONE_RE.test(v)) return "Please enter a valid phone or WhatsApp number.";
+      return;
+    }
     case "company":
       if (data.company.length > 120) return "Please keep this under 120 characters.";
       return;
@@ -62,6 +86,10 @@ export function validateField(field: EnquiryField, data: EnquiryData): string | 
       if (data.services.length === 0) return "Choose at least one service — or “Not sure yet”.";
       const valid = enquiryServiceOptions.map((o) => o.value as string);
       if (data.services.some((s) => !valid.includes(s))) return "Please choose from the listed services.";
+      return;
+    }
+    case "budget": {
+      if (data.budget && !budgetOptions.some((b) => b.value === data.budget)) return "Please choose a listed budget range.";
       return;
     }
     case "timeline": {
@@ -81,7 +109,17 @@ export function validateField(field: EnquiryField, data: EnquiryData): string | 
   }
 }
 
-export const enquiryFieldOrder: EnquiryField[] = ["name", "email", "company", "services", "timeline", "message", "consent"];
+export const enquiryFieldOrder: EnquiryField[] = [
+  "name",
+  "email",
+  "phone",
+  "company",
+  "services",
+  "budget",
+  "timeline",
+  "message",
+  "consent",
+];
 
 export function validateEnquiry(data: EnquiryData): EnquiryErrors {
   const errors: EnquiryErrors = {};
@@ -98,8 +136,10 @@ export function parseEnquiry(input: unknown): EnquiryData {
   return {
     name: str(o.name),
     email: str(o.email),
+    phone: str(o.phone),
     company: str(o.company),
     services: Array.isArray(o.services) ? o.services.filter((s): s is string => typeof s === "string").slice(0, 10) : [],
+    budget: str(o.budget),
     timeline: str(o.timeline),
     message: str(o.message),
     consent: o.consent === true,

@@ -2,19 +2,27 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { Arrow } from "@/components/art/Motifs";
 
-type Variant = "solid" | "outline" | "turmeric" | "ghost";
+export type ButtonVariant = "solid" | "purple" | "lime" | "white" | "outline" | "outline-light" | "turmeric" | "ghost";
 
 const base =
-  "group relative inline-flex items-center justify-between gap-6 min-h-12 px-6 py-3 font-display text-[0.95rem] font-medium tracking-tight overflow-hidden isolate transition-colors duration-500 ease-[var(--ease-studio)]";
+  "group relative inline-flex items-center justify-between gap-5 min-h-12 px-6 py-3 font-display text-[0.92rem] font-bold uppercase tracking-[0.06em] overflow-hidden isolate transition-colors duration-500 ease-[var(--ease-studio)]";
 
-const variants: Record<Variant, string> = {
+const variants: Record<ButtonVariant, string> = {
   solid:
-    "bg-ink text-ivory before:bg-turmeric hover:text-ink focus-visible:text-ink",
+    "bg-ink text-paper border-2 border-ink before:bg-purple hover:text-paper focus-visible:text-paper",
+  purple:
+    "bg-purple text-paper border-2 border-purple before:bg-ink hover:text-lime focus-visible:text-lime",
+  lime:
+    "bg-lime text-ink border-2 border-ink before:bg-ink hover:text-lime focus-visible:text-lime",
+  white:
+    "bg-paper text-ink border-2 border-paper before:bg-lime hover:text-ink focus-visible:text-ink",
   turmeric:
-    "bg-turmeric text-ink before:bg-ink hover:text-ivory focus-visible:text-ivory",
+    "bg-lime text-ink border-2 border-ink before:bg-ink hover:text-lime focus-visible:text-lime",
   outline:
-    "border border-current before:bg-ink hover:text-ivory focus-visible:text-ivory",
-  ghost: "px-0! py-1! min-h-0! justify-start! before:hidden",
+    "border-2 border-current before:bg-ink hover:text-paper focus-visible:text-paper",
+  "outline-light":
+    "border-2 border-paper/80 text-paper before:bg-paper hover:text-purple focus-visible:text-purple",
+  ghost: "px-0! py-1! min-h-0! justify-start! before:hidden border-0",
 };
 
 const sweep =
@@ -30,7 +38,7 @@ export function ButtonLink({
 }: {
   href: string;
   children: ReactNode;
-  variant?: Variant;
+  variant?: ButtonVariant;
   className?: string;
   arrow?: boolean;
 } & Omit<ComponentProps<typeof Link>, "href" | "className" | "children">) {
@@ -44,6 +52,6 @@ export function ButtonLink({
   );
 }
 
-export function buttonClasses(variant: Variant = "solid", className = "") {
+export function buttonClasses(variant: ButtonVariant = "solid", className = "") {
   return `${base} ${sweep} ${variants[variant]} ${className}`;
 }

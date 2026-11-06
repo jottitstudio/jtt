@@ -4,29 +4,29 @@ import { Reveal, RevealLines } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { WorkCard } from "@/components/work/WorkCard";
 
-export function SelectedWork({ projects, index = "05" }: { projects: Project[]; index?: string }) {
+export function SelectedWork({ projects, index = "08" }: { projects: Project[]; index?: string }) {
   const [a, b, c, d] = projects;
   return (
     <section id="work" className="bg-paper py-24 md:py-40">
       <div className="wrap">
         <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="lg:col-span-7">
-            <Eyebrow index={index} tamil="படைப்புகள்">
-              Selected work
+            <Eyebrow index={index} note="Selected Work">
+              Portfolio &amp; concept studies
             </Eyebrow>
             <h2 id="work-title" className="t-h1 mt-8">
-              <RevealLines lines={["Ideas,", "made visible."]} />
+              <RevealLines lines={["IDEAS", "MADE REAL."]} />
             </h2>
           </div>
           <Reveal className="space-y-3 lg:col-span-4 lg:col-start-9">
             <p className="text-ink/80">
-              Explore how we solve commercial and creative problems across branding, social storytelling, performance
-              campaigns, film and web.
+              See how early sketches, strategic positioning and visual storytelling come together across branding,
+              content, campaigns, film and digital experiences.
             </p>
             <p className="text-sm text-ink/70">
-              Every study below is a clearly labelled <strong className="font-medium text-ink">concept project</strong>{" "}
-              — self-initiated to demonstrate our strategic thinking, craft and intended business outcomes without
-              inventing client metrics.
+              Every study below is a clearly labelled <strong className="font-semibold text-ink">concept project</strong>{" "}
+              — created to showcase JOTTIT&apos;s creative direction, craft and commercial thinking without fabricating
+              client results.
             </p>
           </Reveal>
         </div>
@@ -56,14 +56,14 @@ export function SelectedWork({ projects, index = "05" }: { projects: Project[]; 
 
         <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-ink/15 pt-10 sm:flex-row md:mt-28">
           <p className="text-sm text-ink/75">
-            Facing a similar branding, content, website or launch challenge in your industry?
+            Have a brand, launch or digital experience ready to be sketched and built?
           </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href="/work" variant="outline">
               Explore All 5 Concept Studies
             </ButtonLink>
-            <ButtonLink href="/contact" variant="solid">
-              Discuss Your Project
+            <ButtonLink href="/contact" variant="purple">
+              Start Your Project
             </ButtonLink>
           </div>
         </div>

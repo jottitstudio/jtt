@@ -1,5 +1,5 @@
 /**
- * Content model for jottitstudio.
+ * Content model for JOTTIT.
  *
  * These types are deliberately CMS-agnostic. They map 1:1 to document
  * schemas you would define in Sanity, Contentful, Payload or Storyblok.

@@ -4,7 +4,7 @@ import { Placeholder } from "@/components/ui/Eyebrow";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How jottitstudio collects, uses and protects personal information.",
+  description: "How JOTTIT collects, uses and protects personal information.",
   alternates: { canonical: "/privacy" },
   robots: { index: false },
 };
@@ -14,8 +14,9 @@ export default function PrivacyPage() {
     <LegalPage title="Privacy Policy">
       <h2>Information we collect</h2>
       <p>
-        When you submit our project enquiry form we collect the details you provide: your name, email address, company
-        name (optional), the services you are interested in, your timeline and your message.
+        When you submit our project enquiry form we collect the details you provide: your name, email address, phone
+        number (optional), company or brand name (optional), the services you are interested in, approximate budget,
+        timeline and your project description.
       </p>
       <h2>How we use it</h2>
       <p>We use this information only to respond to your enquiry and to discuss a potential project with you.</p>
@@ -33,7 +34,7 @@ export default function PrivacyPage() {
       </p>
       <h2>Contact</h2>
       <p>
-        <Placeholder>[Privacy contact email and registered business details]</Placeholder>
+        <Placeholder>[Privacy contact email and registered business details for JOTTIT]</Placeholder>
       </p>
     </LegalPage>
   );

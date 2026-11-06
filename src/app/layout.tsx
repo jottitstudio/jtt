@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Noto_Sans_Tamil, Space_Grotesk } from "next/font/google";
+import { Caveat, DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -20,28 +20,27 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const notoTamil = Noto_Sans_Tamil({
-  variable: "--font-noto-tamil",
-  subsets: ["tamil"],
-  weight: ["400", "500"],
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "jottitstudio — We make brands matter",
-    template: "%s — jottitstudio",
+    default: "JOTTIT — Every Big Idea Starts With a Little Jot",
+    template: "%s — JOTTIT",
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
-    "creative agency",
+    "JOTTIT",
+    "creative studio",
     "branding agency",
     "brand identity",
-    "social media marketing",
-    "content creation",
+    "social media content",
     "performance marketing",
     "video production",
     "photography",
@@ -50,13 +49,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: "jottitstudio — We make brands matter",
+    title: "JOTTIT — Think It. Jot It. Make It Matter.",
     description: site.description,
-    images: [{ url: "/images/art/hero-artwork.jpg", width: 896, height: 1200, alt: "Abstract jottitstudio artwork" }],
+    images: [{ url: "/images/jottit-logo-ref.jpg", width: 1024, height: 864, alt: "JOTTIT — Think It. Jot It. Make It Matter." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "jottitstudio — We make brands matter",
+    title: "JOTTIT — Think It. Jot It. Make It Matter.",
     description: site.description,
   },
   alternates: { canonical: "/" },
@@ -66,13 +65,13 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#F5EBDD",
+  themeColor: "#5F2DB2",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${notoTamil.variable}`}>
-      <body className="flex min-h-svh flex-col bg-ivory text-ink">
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${caveat.variable}`}>
+      <body className="flex min-h-svh flex-col bg-paper text-ink">
         <MotionProvider>
           <SmoothScroll />
           <Header />

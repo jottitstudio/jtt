@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { mainNav, site } from "@/content/site";
 import { buttonClasses } from "@/components/ui/Button";
 import { Arrow } from "@/components/art/Motifs";
-import { Wordmark } from "./Logo";
+import { Logo, Wordmark } from "./Logo";
 
 export { Wordmark };
 
@@ -22,13 +22,13 @@ export function Header() {
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 36);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the menu whenever the route changes (state adjusted during render)
+  // Close the menu whenever the route changes
   const [lastPath, setLastPath] = useState(pathname);
   if (lastPath !== pathname) {
     setLastPath(pathname);
@@ -47,34 +47,39 @@ export function Header() {
     if (!open) document.documentElement.style.overflow = "";
   }, [open]);
 
+  // On the homepage top (purple hero), use crisp white text & logo until scrolled
+  const onPurpleTop = pathname === "/" && !scrolled;
+
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-turmeric focus:px-4 focus:py-2 focus:font-display"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-lime focus:px-4 focus:py-2 focus:font-display focus:font-bold focus:text-ink"
       >
         Skip to content
       </a>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color,backdrop-filter] duration-500 ${
           scrolled
-            ? "border-b border-ink/10 bg-ivory/85 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
+            ? "border-b border-ink/15 bg-paper/92 text-ink backdrop-blur-md"
+            : onPurpleTop
+              ? "on-purple border-b border-paper/15 bg-purple/80 text-paper backdrop-blur-sm"
+              : "border-b border-ink/10 bg-paper/80 text-ink backdrop-blur-sm"
         }`}
       >
         <div className="wrap flex h-[var(--header-h)] items-center justify-between gap-6">
           <Link href="/" aria-label={`${site.name} — home`} className="inline-flex min-h-11 items-center py-2">
-            <Wordmark className="h-7 w-auto sm:h-8" />
+            <Logo tone={onPurpleTop ? "white" : "purple"} svgClassName="h-8 w-auto sm:h-9" />
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
+          <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-9">
               {mainNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     aria-current={isActive(pathname, item.href) ? "page" : undefined}
-                    className="link-line inline-flex min-h-11 items-center font-display text-[0.95rem] tracking-tight"
+                    className="link-line inline-flex min-h-11 items-center font-display text-[0.9rem] font-semibold uppercase tracking-[0.06em]"
                   >
                     {item.label}
                   </Link>
@@ -85,7 +90,10 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:block">
-              <Link href="/contact" className={buttonClasses("solid", "min-h-11 gap-4! px-5!")}>
+              <Link
+                href="/contact"
+                className={buttonClasses(onPurpleTop ? "lime" : "purple", "min-h-11 gap-4! px-5! py-2.5!")}
+              >
                 <span>Start a Project</span>
                 <Arrow className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
               </Link>
@@ -100,8 +108,8 @@ export function Header() {
               onClick={() => setOpen(true)}
             >
               <span aria-hidden="true" className="flex w-7 flex-col gap-[7px]">
-                <span className="h-[1.5px] w-full bg-ink" />
-                <span className="h-[1.5px] w-2/3 self-end bg-ink" />
+                <span className="h-[2px] w-full bg-current" />
+                <span className="h-[2px] w-2/3 self-end bg-current" />
               </span>
             </button>
           </div>
@@ -121,19 +129,24 @@ export function Header() {
         onCancel={() => setOpen(false)}
       >
         <div className="flex h-full flex-col">
-          <div className="wrap flex h-[var(--header-h)] shrink-0 items-center justify-between">
-            <Link href="/" aria-label={`${site.name} — home`} className="inline-flex min-h-11 items-center py-2" onClick={() => setOpen(false)}>
-              <Wordmark className="h-7 w-auto sm:h-8" />
+          <div className="wrap flex h-[var(--header-h)] shrink-0 items-center justify-between border-b border-paper/15">
+            <Link
+              href="/"
+              aria-label={`${site.name} — home`}
+              className="inline-flex min-h-11 items-center py-2"
+              onClick={() => setOpen(false)}
+            >
+              <Logo tone="white" svgClassName="h-8 w-auto sm:h-9" />
             </Link>
             <button
               type="button"
-              className="relative -mr-2 inline-flex size-12 items-center justify-center"
+              className="relative -mr-2 inline-flex size-12 items-center justify-center text-paper"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
             >
               <span aria-hidden="true" className="relative block size-6">
-                <span className="absolute left-0 top-1/2 h-[1.5px] w-full rotate-45 bg-ivory" />
-                <span className="absolute left-0 top-1/2 h-[1.5px] w-full -rotate-45 bg-ivory" />
+                <span className="absolute left-0 top-1/2 h-[2px] w-full rotate-45 bg-paper" />
+                <span className="absolute left-0 top-1/2 h-[2px] w-full -rotate-45 bg-paper" />
               </span>
             </button>
           </div>
@@ -141,15 +154,15 @@ export function Header() {
           <nav aria-label="Mobile" className="wrap flex flex-1 flex-col justify-center overflow-y-auto py-8">
             <ul className="space-y-1">
               {mainNav.map((item, i) => (
-                <li key={item.href} className="border-b border-ivory/10">
+                <li key={item.href} className="border-b border-paper/15">
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={isActive(pathname, item.href) ? "page" : undefined}
-                    className="group flex items-baseline justify-between py-3 font-display text-[clamp(2.4rem,11vw,4rem)] font-bold uppercase leading-none tracking-[-0.04em] aria-[current=page]:text-turmeric"
+                    className="group flex items-baseline justify-between py-3 font-display text-[clamp(2.25rem,10.5vw,3.8rem)] font-bold uppercase leading-none tracking-[-0.04em] text-paper aria-[current=page]:text-lime"
                   >
                     <span>{item.label}</span>
-                    <span className="font-display text-xs font-medium tracking-[0.16em] text-ivory/50">
+                    <span className="font-display text-xs font-medium tracking-[0.16em] text-paper/60">
                       0{i + 1}
                     </span>
                   </Link>
@@ -162,13 +175,13 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className={buttonClasses("turmeric", "w-full")}
+              className={buttonClasses("lime", "w-full")}
             >
               <span>Start a Project</span>
               <Arrow className="size-4" />
             </Link>
-            <p lang="ta" className="tamil mt-6 text-sm text-ivory/50">
-              வணக்கம் <span lang="en" className="font-sans">— hello, and welcome.</span>
+            <p className="mt-5 font-display text-xs font-bold uppercase tracking-[0.18em] text-paper/70">
+              Think It. Jot It. Make It Matter.
             </p>
           </div>
         </div>
