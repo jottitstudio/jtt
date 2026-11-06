@@ -1,57 +1,45 @@
 import { reasons } from "@/content/studio";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ButtonLink } from "@/components/ui/Button";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
-import { KolamLattice } from "@/components/art/KolamLattice";
 
 export function WhyUs({ index = "09" }: { index?: string }) {
   return (
-    <section id="why-jottit" className="border-t border-ink/15 bg-parchment py-24 md:py-40">
-      <div className="wrap grid gap-y-14 lg:grid-cols-12 lg:gap-x-8">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-32">
+    <section id="why-jottit" className="border-t border-ink/15 bg-parchment py-20 md:py-32">
+      <div className="wrap">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div>
             <Eyebrow index={index} note="Why JOTTIT">
-              The JOTTIT advantage
+              The studio advantage
             </Eyebrow>
-            <h2 id="why-title" className="t-h1 mt-8">
+            <h2 id="why-title" className="t-h1 mt-6">
               <RevealLines lines={["NOT JUST IDEAS.", "IDEAS THAT MOVE."]} />
             </h2>
-            <Reveal delay={0.1} className="mt-6 space-y-6">
-              <p className="text-ink/80">
-                Great ideas lose their power when split across disconnected freelancers, design shops and media vendors.
-                JOTTIT keeps strategy, identity, content, film, web and growth together — so your brand speaks with one
-                unmistakable voice.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <ButtonLink href="/contact" variant="purple">
-                  Start a Project
-                </ButtonLink>
-                <ButtonLink href="/about" variant="outline">
-                  Our Story
-                </ButtonLink>
-              </div>
-            </Reveal>
-            <KolamLattice cells={3} className="mt-12 hidden w-40 text-purple lg:block" strokeWidth={1.25} />
           </div>
+          <Reveal className="max-w-sm">
+            <p className="t-lead text-ink/80">One creative partner. Zero disconnected handovers.</p>
+          </Reveal>
         </div>
 
-        <ul role="list" className="lg:col-span-7 lg:col-start-6">
+        <ul role="list" className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
           {reasons.map((r, i) => (
             <Reveal
               as="li"
               key={r.title}
-              delay={i * 0.06}
-              className="grid grid-cols-[3rem_1fr] gap-x-4 border-t-2 border-ink py-9 last:border-b-2 md:grid-cols-[4rem_1fr_1.2fr] md:gap-x-8 md:py-11"
+              delay={i * 0.05}
+              className="flex flex-col justify-between border-2 border-ink bg-paper p-6 shadow-[5px_5px_0_0_#17151B]"
             >
-              <span className="font-display text-sm font-bold tabular-nums text-purple">0{i + 1}</span>
               <div>
-                <h3 className="t-h3">{r.title}</h3>
-                <p className="mt-2 inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-purple">
-                  <span aria-hidden="true" className="inline-block size-1.5 rotate-45 bg-purple" />
-                  {r.outcome}
-                </p>
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-xs font-bold tabular-nums text-purple">0{i + 1}</span>
+                  <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.12em] text-purple">
+                    {r.outcome}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.02em] text-ink">
+                  {r.title}
+                </h3>
+                <p className="mt-2 text-sm text-ink/75">{r.body}</p>
               </div>
-              <p className="col-start-2 mt-3 text-ink/80 md:col-start-3 md:mt-1">{r.body}</p>
             </Reveal>
           ))}
         </ul>

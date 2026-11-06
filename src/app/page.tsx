@@ -49,45 +49,24 @@ export default async function HomePage() {
       <Philosophy />
 
       {/* SECTION 06 — WHAT WE DO */}
-      <section id="services" className="wrap py-24 md:py-40">
-        <div className="mb-14 grid gap-y-8 md:mb-20 lg:grid-cols-12 lg:items-end lg:gap-x-8">
-          <div className="lg:col-span-7">
+      <section id="services" className="wrap py-20 md:py-32">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:mb-16 lg:flex-row lg:items-end">
+          <div>
             <Eyebrow index="06" note="What We Do">
-              Full-service creative &amp; marketing studio
+              Five connected capabilities
             </Eyebrow>
-            <h2 id="services-title" className="t-h1 mt-8">
+            <h2 id="services-title" className="t-h1 mt-6">
               <RevealLines lines={["WE MAKE", "IDEAS HAPPEN."]} />
             </h2>
           </div>
-          <Reveal className="flex flex-col items-start gap-5 lg:col-span-4 lg:col-start-9">
-            <p className="text-ink/80">
-              Five connected capabilities under one creative studio — turning early thoughts into distinctive brands,
-              campaigns, content, films and high-performing websites.
-            </p>
-            <ButtonLink href="/services" variant="ghost" className="link-line">
-              Explore all 5 services →
+          <Reveal>
+            <ButtonLink href="/services" variant="outline">
+              All 5 Services →
             </ButtonLink>
           </Reveal>
         </div>
 
         <ServiceList services={services} />
-
-        <Reveal
-          delay={0.15}
-          className="mt-12 flex flex-col items-start justify-between gap-6 border-2 border-ink bg-parchment p-6 shadow-[8px_8px_0_0_#5F2DB2] sm:flex-row sm:items-center md:p-8"
-        >
-          <div>
-            <p className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-ink">
-              Have a raw thought and not sure which services you need first?
-            </p>
-            <p className="mt-1 text-sm text-ink/75">
-              Tell us where your brand is today — we will shape a practical, connected scope around your goals.
-            </p>
-          </div>
-          <ButtonLink href="/contact" variant="purple">
-            Jot Your Brief With Us
-          </ButtonLink>
-        </Reveal>
       </section>
 
       {/* SECTION 07 — OUR APPROACH */}

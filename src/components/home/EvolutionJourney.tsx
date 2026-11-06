@@ -5,7 +5,6 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { evolutionChapters } from "@/content/studio";
 import { JOTTIT_LOGO_PATHS } from "@/components/layout/Logo";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ButtonLink } from "@/components/ui/Button";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
 
 /**
@@ -53,30 +52,27 @@ export function EvolutionJourney() {
   return (
     <section id="evolution" className="relative bg-parchment text-ink">
       {/* Intro header for Section 03 */}
-      <div className="wrap pt-24 pb-12 md:pt-36 md:pb-16">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+      <div className="wrap pt-20 pb-10 md:pt-32 md:pb-14">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
-            <Eyebrow index="SECTION 03" note="Interactive Scroll Story">
+            <Eyebrow index="03" note="7-Chapter Interactive Story">
               The Evolution of Ideas
             </Eyebrow>
             <h2 id="evolution-title" className="t-h1 mt-6">
               <RevealLines lines={["From marks", "to meaning."]} />
             </h2>
           </div>
-          <Reveal className="max-w-md space-y-4">
+          <Reveal className="max-w-sm space-y-2">
             <p className="text-ink/80">
-              Scroll through seven chapters of human expression — or click any chapter below — to watch a single
-              primitive mark evolve into symbols, language, sketchbooks, modern design and finally{" "}
+              Scroll or tap any chapter to watch a single mark evolve into{" "}
               <strong className="font-display font-bold text-purple">JOTTIT</strong>.
             </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="#ideas-together"
-                className="font-display text-xs font-bold uppercase tracking-[0.15em] text-purple underline underline-offset-4 hover:text-ink"
-              >
-                Skip evolution story ↓
-              </a>
-            </div>
+            <a
+              href="#ideas-together"
+              className="inline-flex min-h-11 items-center font-display text-xs font-bold uppercase tracking-[0.15em] text-purple underline underline-offset-4 hover:text-ink"
+            >
+              Skip story ↓
+            </a>
           </Reveal>
         </div>
       </div>
@@ -149,7 +145,7 @@ export function EvolutionJourney() {
 
           {/* Scrolling Narrative Chapters Column */}
           <div className="lg:col-span-5 lg:order-1">
-            <ol role="list" className="space-y-12 pb-20 lg:space-y-28 lg:py-16">
+            <ol role="list" className="space-y-8 pb-16 lg:space-y-20 lg:py-12">
               {evolutionChapters.map((ch, idx) => {
                 const isCurrent = activeIdx === idx;
                 return (
@@ -158,35 +154,32 @@ export function EvolutionJourney() {
                     id={`evo-step-${idx}`}
                     onMouseEnter={() => setActiveIdx(idx)}
                     onFocus={() => setActiveIdx(idx)}
-                    className={`border-2 p-6 transition-all duration-500 sm:p-8 ${
+                    className={`border-2 p-5 transition-all duration-500 sm:p-7 ${
                       isCurrent
                         ? "border-ink bg-paper shadow-[8px_8px_0_0_#5F2DB2]"
-                        : "border-ink/25 bg-paper/70 opacity-75 hover:opacity-100"
+                        : "border-ink/20 bg-paper/70 opacity-70 hover:opacity-100"
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="inline-flex items-center gap-2 bg-purple px-2.5 py-1 font-display text-xs font-bold uppercase tracking-[0.14em] text-paper">
-                        Chapter {ch.number}
+                      <span className="inline-flex items-center gap-2 bg-purple px-2.5 py-0.5 font-display text-xs font-bold uppercase tracking-[0.14em] text-paper">
+                        Ch. {ch.number}
                       </span>
                       <span className="font-display text-xs uppercase tracking-[0.12em] text-stone">
-                        {ch.eraTag}
+                        {ch.eraTag.split("·")[0]}
                       </span>
                     </div>
 
-                    <h3 className="t-h3 mt-5 text-ink">{ch.title}</h3>
-                    <p className="mt-3 font-display text-base font-semibold leading-snug text-purple">
-                      {ch.headline}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-ink/80">{ch.body}</p>
+                    <h3 className="t-h3 mt-4 text-ink">{ch.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink/80">{ch.headline}</p>
 
-                    <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-ink/15 pt-3 text-xs text-stone">
-                      <span>{ch.visualNote}</span>
+                    <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-2.5 text-xs text-stone">
+                      <span className="t-hand text-base text-purple">{ch.visualNote.split("·")[0]}</span>
                       <button
                         type="button"
                         onClick={() => setActiveIdx(idx)}
                         className="inline-flex min-h-11 items-center px-2 font-display font-bold uppercase tracking-[0.12em] text-purple underline underline-offset-4"
                       >
-                        {isCurrent ? "Viewing stage" : "Preview stage"}
+                        {isCurrent ? "Viewing" : "View"}
                       </button>
                     </div>
                   </li>
@@ -197,22 +190,11 @@ export function EvolutionJourney() {
         </div>
       </div>
 
-      {/* Bottom quick transition bar + historical interpretation disclaimer */}
-      <div className="wrap pb-16">
-        <div className="flex flex-col items-start justify-between gap-6 border-t-2 border-ink pt-8 sm:flex-row sm:items-center">
-          <div className="space-y-1.5">
-            <p className="font-display text-sm font-bold uppercase tracking-[0.12em] text-ink">
-              From prehistoric cave walls to modern brand systems — every big idea starts with a little jot.
-            </p>
-            <p className="max-w-2xl text-xs text-stone">
-              Creative note: The 7-chapter sequence above is an artistic studio metaphor celebrating human expression,
-              not a literal linear history of global writing systems.
-            </p>
-          </div>
-          <ButtonLink href="/contact" variant="purple">
-            Start Your Next Big Idea
-          </ButtonLink>
-        </div>
+      {/* Minimal historical interpretation note */}
+      <div className="wrap pb-12">
+        <p className="border-t border-ink/15 pt-4 text-xs text-stone">
+          Artistic interpretation of human expression — not a literal linear history of writing systems.
+        </p>
       </div>
     </section>
   );

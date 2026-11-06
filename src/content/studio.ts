@@ -137,19 +137,19 @@ export const jotJoinGot = [
     step: "01",
     cue: "Jot it",
     title: "Capture the raw spark",
-    body: "Every breakthrough starts as an imperfect scribble, a late-night voice note or a bold question. We help you catch the core idea before it gets watered down.",
+    body: "A scribble, a voice note or a bold question — caught before it fades.",
   },
   {
     step: "02",
     cue: "Join it",
     title: "Connect minds & crafts",
-    body: "When strategists, designers, writers, filmmakers, marketers and developers build around the same table, isolated thoughts connect into a complete creative system.",
+    body: "Strategy, design, content, film and code working around one table.",
   },
   {
     step: "03",
     cue: "Got it",
     title: "Turn it into reality",
-    body: "The moment the concept clicks — and launches into the world as a memorable brand, a scroll-stopping campaign or a digital experience that moves your business forward.",
+    body: "Launched into the world as a brand, campaign or digital experience.",
   },
 ] as const;
 
@@ -203,34 +203,34 @@ export const processSteps = [
 
 export const reasons = [
   {
-    title: "Creative thinking combined with business understanding",
-    outcome: "Bold ideas grounded in commercial reality",
-    body: "We love experimental craft and playful ideas, but we never lose sight of why you hired us: to help your business earn trust, win customers and grow.",
+    title: "Creative + commercial",
+    outcome: "Bold ideas that sell",
+    body: "Playful craft built to earn trust, win customers and grow revenue.",
   },
   {
-    title: "Multiple creative capabilities under one roof",
-    outcome: "Branding, content, ads, film & web in sync",
-    body: "No more playing messenger between five disconnected vendors. Our strategists, designers, writers, filmmakers, marketers and developers work as one studio.",
+    title: "All crafts under one roof",
+    outcome: "Brand, content, ads, film & web",
+    body: "One connected studio team instead of five disconnected vendors.",
   },
   {
-    title: "Strategy before execution",
+    title: "Strategy before pixels",
     outcome: "Think It. Jot It. Make It Matter.",
-    body: "We never jump straight into decoration. Every project begins by defining the problem, the audience and the strategic angle so the creative work hits home.",
+    body: "We define the problem and audience first so every creative choice lands.",
   },
   {
-    title: "Strong visual storytelling",
-    outcome: "Work people stop for and remember",
-    body: "From hand-drawn marks and bold typography to art-directed film and interactive web design, we build visual worlds that stand apart from generic templates.",
+    title: "Unmistakable visual craft",
+    outcome: "Work people stop for",
+    body: "Hand-drawn character, bold typography, original film and custom code.",
   },
   {
-    title: "Collaboration and transparency",
-    outcome: "Direct access to the people making the work",
-    body: "We treat our clients as creative partners — sharing early sketches, clear timelines, honest advice and plain-English reporting at every stage.",
+    title: "Direct maker collaboration",
+    outcome: "Zero agency telephone",
+    body: "Work directly with the strategists, designers and builders making your project.",
   },
   {
-    title: "Work designed around the client's goals",
-    outcome: "Tailored scopes, never cookie-cutter packages",
-    body: "Whether you need a complete brand launch, a high-converting website or an ongoing content and performance engine, we shape the work around your objectives.",
+    title: "Built around your goals",
+    outcome: "Tailored scopes, zero fluff",
+    body: "From focused launches to full growth engines, shaped around what you need.",
   },
 ] as const;
 

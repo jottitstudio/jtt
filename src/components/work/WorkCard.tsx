@@ -51,45 +51,27 @@ export function WorkCard({
           </span>
         </div>
 
-        <div className="mt-5 grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1">
-          <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] md:text-[1.75rem]">
-            {index !== undefined && (
-              <span className="mr-3 align-top font-display text-xs font-bold tracking-[0.14em] text-purple">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            )}
-            <span className="link-line">{project.title}</span>
-          </h3>
-          <p className="text-sm tabular-nums text-stone">
-            {project.sector} · {project.year}
-          </p>
-          <p className="col-span-2 mt-1 font-display text-[1rem] font-semibold text-ink">{project.tagline}</p>
+        <div className="mt-4">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] md:text-[1.65rem]">
+              {index !== undefined && (
+                <span className="mr-2.5 align-top font-display text-xs font-bold tracking-[0.14em] text-purple">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              )}
+              <span className="link-line">{project.title}</span>
+            </h3>
+            <p className="shrink-0 text-xs tabular-nums text-stone">
+              {project.sector} · {project.year}
+            </p>
+          </div>
 
-          <dl className="col-span-2 mt-4 space-y-2.5 border-l-2 border-purple/40 pl-4 text-sm text-ink/75 transition-colors group-hover:border-purple">
-            <div>
-              <dt className="inline font-display text-xs font-bold uppercase tracking-[0.12em] text-ink">
-                Challenge:{" "}
-              </dt>
-              <dd className="inline">{project.challenge}</dd>
-            </div>
-            <div>
-              <dt className="inline font-display text-xs font-bold uppercase tracking-[0.12em] text-ink">
-                Approach:{" "}
-              </dt>
-              <dd className="inline">{project.approachSummary}</dd>
-            </div>
-            <div>
-              <dt className="inline font-display text-xs font-bold uppercase tracking-[0.12em] text-ink">
-                Intended outcome:{" "}
-              </dt>
-              <dd className="inline">{project.intendedOutcome}</dd>
-            </div>
-          </dl>
+          <p className="mt-1.5 text-sm text-ink/80">{project.tagline}</p>
 
-          <div className="col-span-2 mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-ink/15 pt-3">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-ink/15 pt-2.5">
             <p className="t-eyebrow text-stone">{project.services.map(serviceTitle).join(" · ")}</p>
-            <span className="font-display text-xs font-bold uppercase tracking-[0.12em] text-purple underline decoration-purple/40 underline-offset-4 group-hover:decoration-purple">
-              View concept study →
+            <span className="font-display text-xs font-bold uppercase tracking-[0.12em] text-purple group-hover:underline">
+              Explore →
             </span>
           </div>
         </div>

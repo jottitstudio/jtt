@@ -6,14 +6,13 @@ import { Reveal, RevealLines } from "@/components/ui/Reveal";
 
 /**
  * SECTION 02 — THE FIRST MARK
- * Headline: IT STARTED WITH A MARK.
- * Copy: Long before brands, screens and campaigns, there was a simple human instinct: to express an idea.
+ * Minimal, high-impact visual opener.
  */
 export function Statement() {
   return (
     <section
       id="first-mark"
-      className="on-dark relative overflow-hidden bg-ink py-24 text-parchment md:py-36"
+      className="on-dark relative overflow-hidden bg-ink py-20 text-parchment md:py-32"
     >
       {/* Warm ochre/terracotta ambient glow evoking firelight on stone */}
       <div
@@ -26,69 +25,59 @@ export function Statement() {
       />
 
       <div className="wrap relative">
-        <div className="grid gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-10">
-          <div className="lg:col-span-6">
-            <Eyebrow index="CHAPTER 01" note="Prehistoric cave wall" className="text-terracotta">
-              The First Mark
+        <div className="grid gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-12">
+          <div className="lg:col-span-5">
+            <Eyebrow index="02" note="The First Mark" className="text-terracotta">
+              Where it all began
             </Eyebrow>
 
-            <h2 id="first-mark-title" className="t-h1 mt-8 text-parchment">
+            <h2 id="first-mark-title" className="t-h1 mt-6 text-parchment">
               <RevealLines lines={["It started", "with a mark."]} />
             </h2>
 
-            <Reveal delay={0.15} className="mt-8 space-y-5">
-              <p className="t-lead text-parchment">
+            <Reveal delay={0.15} className="mt-6">
+              <p className="t-lead text-parchment/90">
                 Long before brands, screens and campaigns, there was a simple human instinct: to express an idea.
-              </p>
-              <p className="text-parchment/75">
-                Before anyone invented an alphabet or a printing press, someone picked up a piece of charred wood and
-                pressed ochre pigment onto rough stone. A handprint. Five tally strokes. The curve of a running stag.
-              </p>
-              <p className="text-parchment/75">
-                That first mark did what every great piece of communication still does today — it captured a fleeting
-                thought inside one mind and made it visible to another.
               </p>
             </Reveal>
 
-            <Reveal delay={0.25} className="mt-10 border-l-2 border-terracotta bg-parchment/5 p-5">
-              <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-terracotta">
-                Creative perspective
-              </p>
-              <p className="mt-1.5 text-sm text-parchment/75">
-                What follows is our studio&apos;s creative interpretation of how human expression takes form — from raw
-                marks to modern brand design — not a literal linear timeline of world writing systems.
-              </p>
+            <Reveal delay={0.25} className="mt-8 flex flex-wrap gap-2">
+              {["Handprint", "Charcoal stroke", "Stone wall", "First idea"].map((chip) => (
+                <span
+                  key={chip}
+                  className="border border-parchment/25 bg-parchment/5 px-3 py-1 font-display text-xs uppercase tracking-[0.14em] text-terracotta"
+                >
+                  {chip}
+                </span>
+              ))}
             </Reveal>
           </div>
 
           {/* Right column: Prehistoric stone tablet & charcoal/ochre illustration */}
-          <Reveal delay={0.2} className="lg:col-span-6">
+          <Reveal delay={0.2} className="lg:col-span-7">
             <figure className="relative border-2 border-parchment/25 bg-[#211C22] p-6 shadow-[10px_10px_0_0_#D96B42] sm:p-8">
               <div className="flex items-center justify-between border-b border-parchment/15 pb-3 text-xs uppercase tracking-[0.14em] text-parchment/60">
-                <span>Artifact Study · 01</span>
-                <span className="text-terracotta">Charcoal, Ochre &amp; Stone</span>
+                <span>Chapter 01 · Prehistoric Expression</span>
+                <span className="text-terracotta">Charcoal &amp; Ochre</span>
               </div>
 
               <svg
-                viewBox="0 0 640 440"
-                className="mt-4 w-full h-auto"
+                viewBox="0 0 640 420"
+                className="mt-4 h-auto w-full"
                 role="img"
                 aria-label="Prehistoric cave wall illustration showing an ochre handprint stencil, charcoal running deer, and primitive tally marks"
               >
-                {/* Stone fracture & contour lines */}
                 <path
-                  d="M18 68 L140 42 L290 74 L480 38 L618 82 M12 370 L180 398 L360 364 L540 402 L626 376"
+                  d="M18 68 L140 42 L290 74 L480 38 L618 82 M12 360 L180 388 L360 354 L540 392 L626 366"
                   stroke="#F4EBDD"
                   strokeOpacity="0.14"
                   strokeWidth="1.5"
                   fill="none"
                 />
 
-                {/* Ochre pigment halo behind handprint */}
                 <circle cx="170" cy="195" r="88" fill="#D96B42" fillOpacity="0.24" />
                 <circle cx="170" cy="195" r="64" fill="#D96B42" fillOpacity="0.32" />
 
-                {/* Handprint stencil on stone */}
                 <motion.path
                   d="M142 260 C130 232 126 205 112 182 C106 172 116 164 124 174 L142 200 L140 138 C140 126 152 126 154 138 L158 192 L168 124 C170 112 182 114 182 126 L178 192 L196 134 C200 122 212 126 208 138 L194 198 L218 158 C224 148 234 156 228 166 L198 228 C192 248 184 264 166 266 Z"
                   fill="#17151B"
@@ -102,7 +91,6 @@ export function Statement() {
                   transition={{ duration: 1.6 }}
                 />
 
-                {/* Charcoal running stag / antelope cave drawing */}
                 <g stroke="#F4EBDD" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none">
                   <motion.path
                     d="M320 230 C355 205 425 202 475 218 C502 226 520 202 532 174 C516 168 504 164 496 156 M532 174 C548 154 568 148 584 154 M496 156 C492 132 504 110 524 98 M496 156 C478 136 462 126 444 124"
@@ -120,23 +108,16 @@ export function Statement() {
                   />
                 </g>
 
-                {/* Ochre hunting / motion arcs & primitive tally marks */}
                 <g stroke="#D96B42" strokeWidth="3.5" strokeLinecap="round">
-                  <path d="M88 330 L94 362 M108 328 L112 362 M128 330 L130 362 M148 328 L150 362 M78 350 L162 340" />
+                  <path d="M88 320 L94 352 M108 318 L112 352 M128 320 L130 352 M148 318 L150 352 M78 340 L162 330" />
                   <path d="M356 128 L374 146 M374 128 L356 146" />
                   <path d="M402 106 L416 120 M416 106 L402 120" />
                 </g>
 
-                {/* Handwritten studio note */}
-                <text x="330" y="392" fill="#D9E56B" fontSize="22" fontFamily="var(--font-hand)">
-                  &ldquo;The instinct to leave a mark — where every story begins.&rdquo;
+                <text x="330" y="382" fill="#D9E56B" fontSize="22" fontFamily="var(--font-hand)">
+                  &ldquo;Where every story begins.&rdquo;
                 </text>
               </svg>
-
-              <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-parchment/65">
-                <span>01 · Handprint, charcoal line &amp; tally</span>
-                <span>Scroll to watch the mark evolve ↓</span>
-              </figcaption>
             </figure>
           </Reveal>
         </div>
