@@ -47,8 +47,8 @@ export function Header() {
     if (!open) document.documentElement.style.overflow = "";
   }, [open]);
 
-  // On the homepage top (purple hero), use crisp white text & logo until scrolled
-  const onPurpleTop = pathname === "/" && !scrolled;
+  // On the homepage/preview top (purple hero), use crisp white text & logo until scrolled
+  const onPurpleTop = (pathname === "/" || pathname === "/preview") && !scrolled;
 
   return (
     <>
