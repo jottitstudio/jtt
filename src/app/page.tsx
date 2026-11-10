@@ -1,5 +1,4 @@
 import { ComingSoon } from "@/components/home/ComingSoon";
-import { Marquee } from "@/components/home/Marquee";
 import { getServices } from "@/lib/cms";
 import { site } from "@/content/site";
 
@@ -20,7 +19,6 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ComingSoon />
-      <Marquee />
     </>
   );
 }

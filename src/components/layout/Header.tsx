@@ -47,8 +47,13 @@ export function Header() {
     if (!open) document.documentElement.style.overflow = "";
   }, [open]);
 
-  // On the homepage/preview top (purple hero), use crisp white text & logo until scrolled
-  const onPurpleTop = (pathname === "/" || pathname === "/preview") && !scrolled;
+  // Hide the global header completely on the standalone Coming Soon homepage (`/`)
+  if (pathname === "/") {
+    return null;
+  }
+
+  // On the preview top (purple hero), use crisp white text & logo until scrolled
+  const onPurpleTop = pathname === "/preview" && !scrolled;
 
   return (
     <>

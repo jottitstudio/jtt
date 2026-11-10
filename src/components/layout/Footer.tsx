@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { legalNav, mainNav, site } from "@/content/site";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
@@ -7,6 +10,11 @@ import { TempleBorder, Arrow } from "@/components/art/Motifs";
 import { Placeholder } from "@/components/ui/Eyebrow";
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <footer className="on-dark relative bg-ink text-paper">
       <TempleBorder className="block text-lime" />
